@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">E-CommerceApp</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="watches">Watches</string>
+    <string name="tv_s">TVs</string>
+    <string name="mobiles">Mobiles &amp; Tablets</string>
+    <string name="orders">Orders</string>
+    <string name="my_account">My account</string>
+    <string name="shop_cart">Shop cart</string>
+    <string name="add_product">Add Product</string>
+
+    <string name="register">REGISTER</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="signup_login_hint">Already have an account? Sign In</string>
+    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+    <string name="e_commerce_app">E-Commerce App</string>
+    <string name="username">Username</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up2">Sign Up</string>
+    <string name="birthday">Birthday</string>
+    <string name="gender">Gender</string>
+    <string name="search">search</string>
+    <string name="add_to_cart">ADD TO CART</string>
+</resources>

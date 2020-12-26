@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_watches"
+            android:icon="@drawable/ic_watch_24"
+            android:title="@string/watches" />
+        <item
+            android:id="@+id/nav_mobiles"
+            android:icon="@drawable/ic_tablet"
+            android:title="@string/mobiles" />
+        <item
+            android:id="@+id/nav_tv"
+            android:icon="@drawable/ic_tv"
+            android:title="@string/tv_s" />
+        <item
+            android:id="@+id/nav_orders"
+            android:icon="@drawable/ic_order"
+            android:title="@string/orders" />
+        <item
+            android:id="@+id/nav_add_product"
+            android:icon="@drawable/ic_add_circle"
+            android:title="@string/add_product" />
+        <item
+            android:id="@+id/nav_my_account"
+            android:icon="@drawable/ic_account_circle"
+            android:title="@string/my_account" />
+    </group>
+</menu>
