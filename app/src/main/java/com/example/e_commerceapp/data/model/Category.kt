@@ -12,6 +12,5 @@ data class Category(
     @NonNull
     val categoryID : Int ,
     val categoryName : String,
-    val categoryProducts : List<Product>
 ) : Serializable {
 }

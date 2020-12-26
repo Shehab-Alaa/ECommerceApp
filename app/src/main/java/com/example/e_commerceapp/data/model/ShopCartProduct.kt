@@ -11,7 +11,7 @@ data class ShopCartProduct(
     @PrimaryKey(autoGenerate = true)
     @NonNull
     val id : Int,
-    val product: Product,
+    val productID: Int,
     val customerID: Int
 ) : Serializable {
 }
