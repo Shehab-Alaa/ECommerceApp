@@ -110,24 +110,17 @@
                                     android:hint="Job"/>
                             </com.google.android.material.textfield.TextInputLayout>
 
-                            <LinearLayout
-                                style="@style/linearParent"
+
+                            <Spinner
+                                android:id="@+id/spinner"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
+                                android:layout_weight="1"
+                                android:entries="@array/gender_array"
+                                android:prompt="Choose Gender"
                                 android:layout_marginTop="@dimen/signup_text_margin_top"
-                                android:layout_marginLeft="4dp">
+                                tools:ignore="HardcodedText" />
 
-                                <TextView
-                                    style="@style/parent"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:hint="@string/gender">
-                                </TextView>
-
-
-
-                            </LinearLayout>
 
                             <LinearLayout
                                 style="@style/linearParent"
@@ -135,16 +128,15 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
                                 android:layout_marginTop="@dimen/signup_text_margin_top"
-                                android:layout_marginLeft="4dp">
+                                android:layout_marginLeft="0dp">
 
                                 <TextView
                                     style="@style/parent"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:hint="@string/birthday">
+                                    android:hint="@string/birthday"
+                                    android:textSize="12sp">
                                 </TextView>
-
-
 
 
                             </LinearLayout>

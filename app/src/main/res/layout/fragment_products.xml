@@ -16,9 +16,14 @@
         android:focusableInTouchMode="true"
         android:background="@color/appBackground">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/products_search_box"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:padding="6dp"
             android:hint="@string/search"
@@ -29,12 +34,38 @@
             android:imeOptions="actionSearch"
             android:drawableStart="@drawable/search_icon_hint" />
 
+            <ImageButton
+                android:id="@+id/search_by_voice_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="2dp"
+                android:src="@drawable/ic_voice"
+                android:background="@color/appBackground">
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/search_by_barCode_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginRight="2dp"
+                android:src="@drawable/ic_scan"
+                android:background="@color/appBackground">
+            </ImageButton>
+
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/products_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_product"
             android:scrollbars="vertical"
+            android:recyclerViewAdapter="@{productsViewModel.productsLiveData}"
             android:scrollbarThumbVertical="@drawable/list_scrollbar">
         </androidx.recyclerview.widget.RecyclerView>
 

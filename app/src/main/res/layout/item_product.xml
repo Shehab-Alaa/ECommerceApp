@@ -14,7 +14,8 @@
     android:layout_width="match_parent"
     android:layout_height="220dp"
     android:layout_margin="3dp"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:onClick="@{(view)->productItemViewModel.onItemClick(view)}">
 
 
     <ImageView
@@ -27,6 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.377"
+        android:imageSrc="@{productItemViewModel.productImage}"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -36,7 +38,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="36dp"
-        android:text="Product Name"
+        android:text="@{productItemViewModel.productName}"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -64,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        android:text="Product Price"
+        android:text="@{productItemViewModel.productPrice}"
         app:layout_constraintBottom_toTopOf="@+id/add_to_cart_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.068"
@@ -84,6 +86,7 @@
         android:padding="5dp"
         android:text="@string/add_to_cart"
         android:textColor="#FFFFFF"
+        android:onClick="@{(view)->productItemViewModel.onAddItemToCartClick(view)}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

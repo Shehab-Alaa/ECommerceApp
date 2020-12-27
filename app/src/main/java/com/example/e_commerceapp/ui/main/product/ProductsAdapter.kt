@@ -15,17 +15,22 @@ class ProductsAdapter(productItems : MutableList<Product>, private val productsA
         return  ProductsViewHolder(ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    interface ProductsAdapterListener : BaseItemListener<Product>
+    interface ProductsAdapterListener : BaseItemListener<Product> , ProductItemViewModel.AddToCartClickListener
 
-    inner class ProductsViewHolder(private val itemProductBinding: ItemProductBinding) : BaseViewHolder(itemProductBinding.root), ProductItemViewModel.ProductItemClickListener{
+    inner class ProductsViewHolder(private val itemProductBinding: ItemProductBinding) : BaseViewHolder(itemProductBinding.root), ProductItemViewModel.ProductItemClickListener,
+        ProductItemViewModel.AddToCartClickListener {
 
         override fun onBind(position: Int) {
-            itemProductBinding.productItemViewModel = ProductItemViewModel(getItems()[position], this)
+            itemProductBinding.productItemViewModel = ProductItemViewModel(getItems()[position], this , this)
             itemProductBinding.executePendingBindings()
         }
 
         override fun onItemClick(view: View, item: Product) {
             productsAdapterListener.onItemClick(view, item)
+        }
+
+        override fun onAddToCartClick(view: View, product: Product) {
+            productsAdapterListener.onAddToCartClick(view, product)
         }
     }
 

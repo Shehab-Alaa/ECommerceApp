@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_productDetailsFragment_to_shopCartFragment"
             app:destination="@id/shopCartFragment" />
+        <argument
+            android:name="selectedProduct"
+            app:argType="com.example.e_commerceapp.data.model.Product" />
     </fragment>
     <fragment
         android:id="@+id/shopCartFragment"
