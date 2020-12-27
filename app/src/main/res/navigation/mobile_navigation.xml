@@ -18,7 +18,7 @@
         <argument
             android:name="categoryName"
             app:argType="string"
-            android:defaultValue="watches" />
+            android:defaultValue="Watches" />
     </fragment>
     <fragment
         android:id="@+id/mobilesItem"
@@ -34,7 +34,7 @@
         <argument
             android:name="categoryName"
             app:argType="string"
-            android:defaultValue="mobiles" />
+            android:defaultValue="Mobiles" />
     </fragment>
     <fragment
         android:id="@+id/tvsItem"
@@ -50,7 +50,7 @@
         <argument
             android:name="categoryName"
             app:argType="string"
-            android:defaultValue="tvs" />
+            android:defaultValue="Tv's" />
     </fragment>
     <fragment
         android:id="@+id/addProductItem"

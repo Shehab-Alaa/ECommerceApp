@@ -14,14 +14,23 @@ import com.example.e_commerceapp.R
 import com.example.e_commerceapp.data.model.Product
 import com.example.e_commerceapp.databinding.FragmentProductsBinding
 import com.example.e_commerceapp.ui.base.BaseFragment
+import com.example.e_commerceapp.utils.AppConstants
+import org.koin.android.viewmodel.ext.android.getViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class ProductsFragment:BaseFragment<FragmentProductsBinding , ProductsViewModel>(),
     ProductsAdapter.ProductsAdapterListener {
 
-    private val productsViewModel : ProductsViewModel by viewModel{ parametersOf(SavedStateHandle(mapOf())) }
+    private lateinit var productsViewModel : ProductsViewModel
     private val productsAdapter = ProductsAdapter(mutableListOf() , this)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val args = ProductsFragmentArgs.fromBundle(requireArguments())
+        productsViewModel = getViewModel{ parametersOf(SavedStateHandle(mapOf(AppConstants.SELECTED_CATEGORY to args.categoryName))) }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

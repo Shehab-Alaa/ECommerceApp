@@ -9,9 +9,9 @@ class ProductItemViewModel(private val product: Product,
                            private val productItemClickListener: ProductItemClickListener ,
                            private val addToCartClickListener: AddToCartClickListener) {
 
-    val productImage: ObservableField<String> = ObservableField<String>(product.productImage)
-    val productName: ObservableField<String> = ObservableField<String>(product.productName)
-    val productPrice: ObservableField<String> = ObservableField<String>(product.productPrice.toString() + " EGP")
+    val productImage: ObservableField<String> = ObservableField<String>(product.image)
+    val productName: ObservableField<String> = ObservableField<String>(product.name)
+    val productPrice: ObservableField<String> = ObservableField<String>(product.price.toString() + " EGP")
 
     fun onItemClick(view: View) {
         productItemClickListener.onItemClick(view, product)

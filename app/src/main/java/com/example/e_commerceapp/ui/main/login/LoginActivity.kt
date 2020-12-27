@@ -24,10 +24,10 @@ class LoginActivity:BaseActivity<ActivityLoginBinding , LoginViewModel>() {
         getViewDataBinding().loginButton.setOnClickListener {
             when {
                 getViewDataBinding().usernameEditText.text.isEmpty() -> {
-                    Toast.makeText(this , "Please enter you username." , Toast.LENGTH_SHORT)
+                    Toast.makeText(this , "Please enter you username." , Toast.LENGTH_SHORT).show()
                 }
                 getViewDataBinding().passwordEditText.text.isEmpty() -> {
-                    Toast.makeText(this , "Please enter you password." , Toast.LENGTH_SHORT)
+                    Toast.makeText(this , "Please enter you password." , Toast.LENGTH_SHORT).show()
                 }
                 else -> {
                     getViewModel().fetchCustomerData(getViewDataBinding().usernameEditText.text.toString() , getViewDataBinding().passwordEditText.text.toString())

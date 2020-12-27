@@ -16,4 +16,7 @@ object AppConstants {
     const val LOGIN_CUSTOMER = "login_customer"
 
     const val CATEGORIES_REF = "categories"
+    const val PRODUCTS_IMAGES = "productsImages/"
+
+    const val SELECTED_CATEGORY = "categoryName"
 }

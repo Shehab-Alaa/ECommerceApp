@@ -39,4 +39,10 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
+    <string-array name="categories_array">
+        <item>"Watches"</item>
+        <item>"Mobiles"</item>
+        <item>"Tv's"</item>
+    </string-array>
 </resources>
