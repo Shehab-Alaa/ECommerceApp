@@ -1,8 +1,13 @@
 package com.example.e_commerceapp.ui.main.login
 
 import androidx.lifecycle.SavedStateHandle
-import com.example.e_commerceapp.data.local.db.DbRepositorySource
+import com.example.e_commerceapp.data.local.db.DatabaseDataSource
+import com.example.e_commerceapp.data.remote.FirebaseDataSource
 import com.example.e_commerceapp.ui.base.BaseViewModel
 
-class LoginViewModel (private val databaseRepository: DbRepositorySource, saveStateHandle: SavedStateHandle) : BaseViewModel(databaseRepository,saveStateHandle) {
+class LoginViewModel (firebaseRepository: FirebaseDataSource, databaseRepository: DatabaseDataSource, saveStateHandle: SavedStateHandle) : BaseViewModel(firebaseRepository,databaseRepository,saveStateHandle) {
+
+    init {
+        getFirebaseRepository().updateCustomer()
+    }
 }

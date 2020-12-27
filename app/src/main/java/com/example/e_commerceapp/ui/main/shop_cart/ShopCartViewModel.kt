@@ -1,8 +1,9 @@
 package com.example.e_commerceapp.ui.main.shop_cart
 
 import androidx.lifecycle.SavedStateHandle
-import com.example.e_commerceapp.data.local.db.DbRepositorySource
+import com.example.e_commerceapp.data.local.db.DatabaseDataSource
+import com.example.e_commerceapp.data.remote.FirebaseDataSource
 import com.example.e_commerceapp.ui.base.BaseViewModel
 
-class ShopCartViewModel (private val databaseRepository: DbRepositorySource, saveStateHandle: SavedStateHandle) : BaseViewModel(databaseRepository,saveStateHandle) {
+class ShopCartViewModel(firebaseRepository: FirebaseDataSource, databaseRepository: DatabaseDataSource, saveStateHandle: SavedStateHandle) : BaseViewModel(firebaseRepository,databaseRepository,saveStateHandle) {
 }
