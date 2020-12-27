@@ -8,10 +8,57 @@
             type="com.example.e_commerceapp.ui.main.add_product.AddProductViewModel" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:text="click to select product image"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+    </TextView>
+
+    <ImageView
+        android:id="@+id/product_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/item">
+    </ImageView>
+
+    <EditText
+        android:id="@+id/product_name_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter product name."
+        android:layout_margin="5dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/product_price_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter product price."
+        android:layout_margin="5dp">
+    </EditText>
+
+    <Button
+        android:id="@+id/add_product_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Add Product"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="#1FC326">
+    </Button>
+
+</LinearLayout>
 
 </layout>

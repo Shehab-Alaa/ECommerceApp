@@ -3,10 +3,10 @@ package com.example.e_commerceapp.data.model
 import java.io.Serializable
 
 data class Customer(
-    val customerID : Int,
-    val customerUserName : String,
-    val customerPassword : String,
-    val customerGender : String,
-    val customerBirthday : String,
-    val customerJob : String,
+    val id  : Int = 0,
+    val username : String = "",
+    val password : String = "",
+    val gender : String = " ",
+    val birthday : String = "",
+    val job : String = "",
 ) : Serializable

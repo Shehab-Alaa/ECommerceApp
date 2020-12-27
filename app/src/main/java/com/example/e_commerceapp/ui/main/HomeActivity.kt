@@ -1,7 +1,10 @@
 package com.example.e_commerceapp.ui.main
 
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.Log
 import android.view.Menu
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.SavedStateHandle
@@ -12,8 +15,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
+import com.example.e_commerceapp.data.model.Customer
 import com.example.e_commerceapp.databinding.ActivityHomeBinding
 import com.example.e_commerceapp.ui.base.BaseActivity
+import com.example.e_commerceapp.utils.AppConstants
 import com.google.android.material.navigation.NavigationView
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -22,6 +27,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding , HomeViewModel>() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val homeViewModel: HomeViewModel by viewModel{ parametersOf(SavedStateHandle(mapOf())) }
+    private lateinit var customer : Customer
+
+
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+
+        customer = intent.getSerializableExtra(AppConstants.LOGIN_CUSTOMER) as Customer
+        Log.i("Here" , "Customer Job "  + customer.job)
+    }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_home
@@ -47,8 +61,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding , HomeViewModel>() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_add_product , R.id.nav_mobiles , R.id.nav_tv , R.id.nav_watches ,
-                R.id.nav_orders , R.id.nav_my_account
+                R.id.watchesItem , R.id.mobilesItem , R.id.tvsItem , R.id.addProductItem , R.id.customerProfileItem
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

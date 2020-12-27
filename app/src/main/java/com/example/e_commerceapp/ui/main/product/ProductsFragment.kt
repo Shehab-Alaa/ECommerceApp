@@ -38,11 +38,6 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding , ProductsViewModel>
         getViewDataBinding().productsRv.adapter = productsAdapter
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.home , menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_shop_cart)
             getNavController().navigate(ProductsFragmentDirections.actionProductsFragmentToShopCartFragment())

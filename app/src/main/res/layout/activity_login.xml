@@ -82,12 +82,13 @@
                                 android:id="@+id/textInputEmail"
                                 style="@style/parent"
                                 android:layout_marginTop="@dimen/loginViewsMargin">
+
                                 <EditText
                                     android:id="@+id/username_editText"
                                     style="@style/modifiedEditText"
+                                    android:hint="@string/username"
                                     android:inputType="textEmailAddress"
-                                    android:maxLines="1"
-                                    android:hint="@string/username"/>
+                                    android:maxLines="1" />
 
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,6 +115,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Remember me"
                                 android:textSize="12sp"
+                                android:checked="@{loginViewModel.rememberMeLiveData}"
                                 android:textColor="@color/primaryTextColor">
                             </CheckBox>
 
@@ -124,6 +126,7 @@
                                     android:text="@string/forgot_password"
                                     android:textColor="@color/primaryTextColor"
                                     android:textSize="@dimen/newsMoreTextSize"
+                                    android:onClick="@{(view)->loginViewModel.onForgotPasswordClick(view)}"
                                     android:layout_marginLeft="85dp"/>
 
                             </LinearLayout>

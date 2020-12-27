@@ -1,5 +1,6 @@
 package com.example.e_commerceapp.data.model
 
+import android.net.Uri
 import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -10,10 +11,10 @@ import java.io.Serializable
 data class Product(
     @PrimaryKey (autoGenerate = true)
     @NonNull
-    val productID : Int,
-    val productName : String,
-    val productQuantity : Int,
-    val productPrice : Double,
-    val productImage : String,
-    val categoryID : Int
+    val id : Int,
+    val name : String,
+    val quantity : Int,
+    val price : Double,
+    val image : Uri,
+    val categoryId : String
 ) : Serializable

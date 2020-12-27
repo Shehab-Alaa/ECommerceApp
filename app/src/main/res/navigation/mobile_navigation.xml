@@ -3,47 +3,79 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/productsFragment">
+    app:startDestination="@id/watchesItem">
     <fragment
-        android:id="@+id/productsFragment"
+        android:id="@+id/watchesItem"
         android:name="com.example.e_commerceapp.ui.main.product.ProductsFragment"
         android:label="ProductsFragment"
         tools:layout="@layout/fragment_products">
         <action
             android:id="@+id/action_productsFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+            app:destination="@id/productDetailsItem" />
         <action
             android:id="@+id/action_productsFragment_to_shopCartFragment"
-            app:destination="@id/shopCartFragment" />
+            app:destination="@id/shopCartItem" />
         <argument
             android:name="categoryName"
             app:argType="string"
-            android:defaultValue="Watches" />
+            android:defaultValue="watches" />
     </fragment>
     <fragment
-        android:id="@+id/addProductFragment"
+        android:id="@+id/mobilesItem"
+        android:name="com.example.e_commerceapp.ui.main.product.ProductsFragment"
+        android:label="ProductsFragment"
+        tools:layout="@layout/fragment_products">
+        <action
+            android:id="@+id/action_productsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsItem" />
+        <action
+            android:id="@+id/action_productsFragment_to_shopCartFragment"
+            app:destination="@id/shopCartItem" />
+        <argument
+            android:name="categoryName"
+            app:argType="string"
+            android:defaultValue="mobiles" />
+    </fragment>
+    <fragment
+        android:id="@+id/tvsItem"
+        android:name="com.example.e_commerceapp.ui.main.product.ProductsFragment"
+        android:label="ProductsFragment"
+        tools:layout="@layout/fragment_products">
+        <action
+            android:id="@+id/action_productsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsItem" />
+        <action
+            android:id="@+id/action_productsFragment_to_shopCartFragment"
+            app:destination="@id/shopCartItem" />
+        <argument
+            android:name="categoryName"
+            app:argType="string"
+            android:defaultValue="tvs" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductItem"
         android:name="com.example.e_commerceapp.ui.main.add_product.AddProductFragment"
         android:label="AddProductFragment"
         tools:layout="@layout/fragment_add_product"/>
     <fragment
-        android:id="@+id/customerProfileFragment"
+        android:id="@+id/customerProfileItem"
         android:name="com.example.e_commerceapp.ui.main.customer_profile.CustomerProfileFragment"
         android:label="CustomerProfileFragment"
         tools:layout="@layout/fragment_customer_profile"/>
     <fragment
-        android:id="@+id/productDetailsFragment"
+        android:id="@+id/productDetailsItem"
         android:name="com.example.e_commerceapp.ui.main.product_details.ProductDetailsFragment"
         android:label="ProductDetailsFragment"
         tools:layout="@layout/fragment_product_details">
         <action
             android:id="@+id/action_productDetailsFragment_to_shopCartFragment"
-            app:destination="@id/shopCartFragment" />
+            app:destination="@id/shopCartItem" />
         <argument
             android:name="selectedProduct"
             app:argType="com.example.e_commerceapp.data.model.Product" />
     </fragment>
     <fragment
-        android:id="@+id/shopCartFragment"
+        android:id="@+id/shopCartItem"
         android:name="com.example.e_commerceapp.ui.main.shop_cart.ShopCartFragment"
         android:label="ShopCartFragment"
         tools:layout="@layout/fragment_shop_cart"/>

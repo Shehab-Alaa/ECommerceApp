@@ -117,7 +117,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:entries="@array/gender_array"
-                                android:prompt="Choose Gender"
                                 android:layout_marginTop="@dimen/signup_text_margin_top"
                                 tools:ignore="HardcodedText" />
 
