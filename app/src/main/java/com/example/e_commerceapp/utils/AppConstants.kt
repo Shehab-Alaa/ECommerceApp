@@ -1,6 +1,6 @@
 package com.example.e_commerceapp.utils
 
-
+import com.example.e_commerceapp.BuildConfig
 
 object AppConstants {
     const val CATEGORIES_TABLE_NAME = "categories"
@@ -19,4 +19,7 @@ object AppConstants {
     const val PRODUCTS_IMAGES = "productsImages/"
 
     const val SELECTED_CATEGORY = "categoryName"
+
+    const val PREF_NAME = BuildConfig.APPLICATION_ID + "_pref"
+    const val REMEMBERED_CUSTOMER = "rememberMe"
 }

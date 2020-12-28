@@ -40,4 +40,8 @@ class ProductsViewModel (firebaseRepository: FirebaseDataSource, databaseReposit
             })
     }
 
+    fun filterProductsData(searchInput : String){
+        productsData.postValue(productsData.value?.filter { it.name.contains(searchInput) } as MutableList<Product>?)
+    }
+
 }

@@ -40,6 +40,7 @@ val appModule = module {
     viewModel { (handle : SavedStateHandle) -> ShopCartViewModel(get() , get() , handle) }
     viewModel { (handle : SavedStateHandle) -> SignUpViewModel(get() , get() , handle) }
 
+    single { provideSharedPreferences(get())}
 }
 
 private fun provideDatabaseName() = AppConstants.DATABASE_NAME
@@ -50,3 +51,5 @@ private fun provideDatabaseRepository(appDatabase: AppDatabase) : DatabaseDataSo
 
 private fun provideFirebaseReference() : DatabaseReference = Firebase.database.reference
 private fun provideFirebaseRepository(databaseReference : DatabaseReference) : FirebaseDataSource  = FirebaseRepository(databaseReference)
+
+private fun provideSharedPreferences(context: Context) = context.getSharedPreferences(AppConstants.PREF_NAME , Context.MODE_PRIVATE)
