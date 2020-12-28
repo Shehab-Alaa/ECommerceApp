@@ -1,17 +1,12 @@
 package com.example.e_commerceapp.ui.main.add_product
 
 import android.net.Uri
-import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.example.e_commerceapp.data.model.Product
-import com.example.e_commerceapp.data.remote.FirebaseDataSource
+import com.example.e_commerceapp.data.service.FirebaseDataSource
 import com.example.e_commerceapp.ui.base.BaseViewModel
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
 
 class AddProductViewModel(firebaseRepository: FirebaseDataSource, saveStateHandle: SavedStateHandle) : BaseViewModel(firebaseRepository,saveStateHandle) {
 

@@ -3,8 +3,8 @@ package com.example.e_commerceapp.di.module
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.SavedStateHandle
-import com.example.e_commerceapp.data.remote.FirebaseDataSource
-import com.example.e_commerceapp.data.remote.FirebaseRepository
+import com.example.e_commerceapp.data.service.FirebaseDataSource
+import com.example.e_commerceapp.data.service.FirebaseRepository
 import com.example.e_commerceapp.ui.main.HomeViewModel
 import com.example.e_commerceapp.ui.main.add_product.AddProductViewModel
 import com.example.e_commerceapp.ui.main.customer_profile.CustomerProfileViewModel

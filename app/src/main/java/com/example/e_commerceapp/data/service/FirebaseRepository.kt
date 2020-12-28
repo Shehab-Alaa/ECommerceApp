@@ -1,8 +1,10 @@
-package com.example.e_commerceapp.data.remote
+package com.example.e_commerceapp.data.service
 
 import android.net.Uri
+import com.example.e_commerceapp.data.model.Customer
 import com.example.e_commerceapp.data.model.Product
 import com.example.e_commerceapp.utils.AppConstants
+import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.Query
 import com.google.firebase.storage.FirebaseStorage
@@ -11,7 +13,13 @@ import com.google.firebase.storage.UploadTask
 class FirebaseRepository(private val databaseReference : DatabaseReference) : FirebaseDataSource {
 
 
-     override fun getCustomerDataQuery(username:String) : Query {
+    override fun pushCustomerToFirebase(customer: Customer): Task<Void> {
+        return databaseReference.child(AppConstants.CUSTOMERS_REF)
+            .push()
+            .setValue(customer)
+    }
+
+    override fun getCustomerDataQuery(username:String) : Query {
         return databaseReference.child(AppConstants.CUSTOMERS_REF)
             .orderByChild(AppConstants.USERNAME_REF)
             .equalTo(username)

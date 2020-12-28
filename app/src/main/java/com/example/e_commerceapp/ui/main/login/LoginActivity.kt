@@ -11,6 +11,7 @@ import com.example.e_commerceapp.data.model.Customer
 import com.example.e_commerceapp.databinding.ActivityLoginBinding
 import com.example.e_commerceapp.ui.base.BaseActivity
 import com.example.e_commerceapp.ui.main.HomeActivity
+import com.example.e_commerceapp.ui.main.sign_up.SignUpActivity
 import com.example.e_commerceapp.utils.AppConstants
 import com.google.gson.Gson
 import org.koin.android.ext.android.inject
@@ -75,6 +76,13 @@ class LoginActivity:BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 Toast.makeText(this, "Invalid Login", Toast.LENGTH_SHORT).show()
             }
         })
+
+
+        getViewDataBinding().signUpText.setOnClickListener{
+            finish()
+            val intent = Intent(this , SignUpActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 

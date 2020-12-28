@@ -81,6 +81,17 @@
                                 style="@style/parent"
                                 android:layout_marginTop="@dimen/signup_text_margin_top">
                                 <EditText
+                                    android:id="@+id/id_editText"
+                                    style="@style/modifiedEditText"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:hint="ID"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/signup_text_margin_top">
+                                <EditText
                                     android:id="@+id/username_editText"
                                     style="@style/modifiedEditText"
                                     android:inputType="text"
@@ -111,8 +122,19 @@
                             </com.google.android.material.textfield.TextInputLayout>
 
 
+                            <EditText
+                                android:id="@+id/birthday_editText"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:hint="@string/birthday"
+                                android:gravity="center_vertical"
+                                android:textSize="12sp"
+                                android:inputType="date">
+                            </EditText>
+
+
                             <Spinner
-                                android:id="@+id/spinner"
+                                android:id="@+id/gender_spinner"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -120,32 +142,13 @@
                                 android:layout_marginTop="@dimen/signup_text_margin_top"
                                 tools:ignore="HardcodedText" />
 
-
-                            <LinearLayout
-                                style="@style/linearParent"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginTop="@dimen/signup_text_margin_top"
-                                android:layout_marginLeft="0dp">
-
-                                <TextView
-                                    style="@style/parent"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:hint="@string/birthday"
-                                    android:textSize="12sp">
-                                </TextView>
-
-
-                            </LinearLayout>
-
                             <Button
                                 android:id="@+id/sign_up_Button"
                                 style="@style/loginButton"
                                 android:layout_gravity="center"
                                 android:text="@string/sign_up2"
-                                android:textAllCaps="false"/>
+                                android:textAllCaps="false"
+                                android:layout_margin="10dp"/>
 
                             <TextView
                                 style="@style/parent"
