@@ -3,7 +3,6 @@ package com.example.e_commerceapp.ui.main.product
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
-import com.example.e_commerceapp.data.local.db.DatabaseDataSource
 import com.example.e_commerceapp.data.model.Product
 import com.example.e_commerceapp.data.remote.FirebaseDataSource
 import com.example.e_commerceapp.ui.base.BaseViewModel
@@ -12,7 +11,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
-class ProductsViewModel (firebaseRepository: FirebaseDataSource, databaseRepository: DatabaseDataSource, saveStateHandle: SavedStateHandle) : BaseViewModel(firebaseRepository,databaseRepository,saveStateHandle) {
+class ProductsViewModel (firebaseRepository: FirebaseDataSource, saveStateHandle: SavedStateHandle) : BaseViewModel(firebaseRepository,saveStateHandle) {
 
     private val categoryName : String = getSaveStateHandle().get(AppConstants.SELECTED_CATEGORY)!!
 

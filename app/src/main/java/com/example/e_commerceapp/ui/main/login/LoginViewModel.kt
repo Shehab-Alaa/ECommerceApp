@@ -4,7 +4,6 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
-import com.example.e_commerceapp.data.local.db.DatabaseDataSource
 import com.example.e_commerceapp.data.model.Customer
 import com.example.e_commerceapp.data.remote.FirebaseDataSource
 import com.example.e_commerceapp.ui.base.BaseViewModel
@@ -12,7 +11,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
-class LoginViewModel (firebaseRepository: FirebaseDataSource, databaseRepository: DatabaseDataSource, saveStateHandle: SavedStateHandle) : BaseViewModel(firebaseRepository,databaseRepository,saveStateHandle) {
+class LoginViewModel (firebaseRepository: FirebaseDataSource, saveStateHandle: SavedStateHandle) : BaseViewModel(firebaseRepository,saveStateHandle) {
 
     val rememberMeLiveData : MutableLiveData<Boolean> = MutableLiveData()
 
