@@ -17,8 +17,10 @@ import com.example.e_commerceapp.R
 import com.example.e_commerceapp.data.model.Product
 import com.example.e_commerceapp.databinding.FragmentProductsBinding
 import com.example.e_commerceapp.ui.base.BaseFragment
+import com.example.e_commerceapp.ui.main.HomeActivity
 import com.example.e_commerceapp.utils.AppConstants
 import com.google.zxing.integration.android.IntentIntegrator
+import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.getViewModel
 import org.koin.core.parameter.parametersOf
 import java.util.*
@@ -30,6 +32,7 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
     private lateinit var productsViewModel : ProductsViewModel
     private val productsAdapter = ProductsAdapter(mutableListOf(), this)
     private val voiceCode = 10
+    private val loginCustomer = (activity as HomeActivity).getLoginCustomer()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

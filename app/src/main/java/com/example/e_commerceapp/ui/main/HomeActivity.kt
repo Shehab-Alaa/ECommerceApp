@@ -29,12 +29,10 @@ class HomeActivity : BaseActivity<ActivityHomeBinding , HomeViewModel>() {
     private val homeViewModel: HomeViewModel by viewModel{ parametersOf(SavedStateHandle(mapOf())) }
     private lateinit var customer : Customer
 
-
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
         customer = intent.getSerializableExtra(AppConstants.LOGIN_CUSTOMER) as Customer
-        Log.i("Here" , "Customer Job "  + customer.job)
     }
 
     override fun getLayoutId(): Int {
@@ -78,4 +76,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding , HomeViewModel>() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    fun getLoginCustomer() = customer
 }

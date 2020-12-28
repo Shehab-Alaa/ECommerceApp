@@ -19,14 +19,15 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
             android:layout_marginStart="28dp"
             android:layout_marginLeft="28dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.377"
+            android:src="@{shopCartItemViewModel.productImage}"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
@@ -36,7 +37,7 @@
             android:layout_marginStart="28dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="36dp"
-            android:text="Product Name"
+            android:text="@{shopCartItemViewModel.productName}"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -51,7 +52,7 @@
             android:layout_marginStart="28dp"
             android:layout_marginLeft="28dp"
             android:layout_marginTop="20dp"
-            android:text="Product Price"
+            android:text="@{shopCartItemViewModel.productPrice}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -77,6 +78,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:background="#FFFFFF"
+            android:onClick="@{(view)->shopCartItemViewModel.decProductQuantity(view)}"
             android:src="@drawable/ic_baseline_remove"
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/product_name_text" />
@@ -88,7 +90,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="20dp"
-            android:text="1"
+            android:text="@{shopCartItemViewModel.productQuantity}"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageButton"
@@ -103,6 +105,7 @@
             android:layout_marginTop="20dp"
             android:background="#ffffff"
             android:src="@drawable/ic_baseline_add"
+            android:onClick="@{(view)->shopCartItemViewModel.incProductQuantity(view)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toEndOf="@+id/textView3"
@@ -132,6 +135,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:background="#ffffff"
+            android:onClick="@{(view)->shopCartItemViewModel.deleteProductFromCart(view)}"
             android:src="@drawable/ic_baseline_delete_forever_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
