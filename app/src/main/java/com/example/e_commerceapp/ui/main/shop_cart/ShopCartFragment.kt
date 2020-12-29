@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.data.model.Customer
+import com.example.e_commerceapp.data.model.Order
 import com.example.e_commerceapp.data.model.Product
 import com.example.e_commerceapp.databinding.FragmentShopCartBinding
 import com.example.e_commerceapp.ui.base.BaseFragment
@@ -17,6 +18,7 @@ import com.example.e_commerceapp.utils.AppConstants
 import org.koin.android.viewmodel.ext.android.getViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import java.util.*
 
 class ShopCartFragment:BaseFragment<FragmentShopCartBinding , ShopCartViewModel>(),
     ShopCartProductsAdapter.CartProductsAdapterListener {
@@ -35,8 +37,23 @@ class ShopCartFragment:BaseFragment<FragmentShopCartBinding , ShopCartViewModel>
         initRecipesRecyclerView()
 
         getViewDataBinding().orderNowBtn.setOnClickListener {
+            // set orderDate , deliveryLocation , total price ==> before OrderCheckout.
 
+            val currentDateTime = Calendar.getInstance().time
+
+
+            val totalPrice = calcTotalPrice(cartProductsAdapter.getItems())
+            val order = Order(loginCustomer.username , cartProductsAdapter.getItems() , "" , currentDateTime.toString(), totalPrice)
+            getNavController().navigate(ShopCartFragmentDirections.actionShopCartItemToOrderFragment(order))
         }
+    }
+
+    private fun calcTotalPrice(productsList : MutableList<Product>) : Double{
+        var totalPrice = 0.0
+        productsList.onEach {
+            totalPrice += (it.price * it.quantity)
+        }
+        return totalPrice
     }
 
     private fun initRecipesRecyclerView(){

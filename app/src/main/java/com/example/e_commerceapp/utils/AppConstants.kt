@@ -26,4 +26,6 @@ object AppConstants {
     const val SHOP_CART_PRODUCTS_REF = "shopCartProducts"
     const val PRODUCT_NAME_REF = "name"
     const val PRODUCT_QUANTITY_REF = "quantity"
+
+    const val SELECTED_ORDER = "selected_order"
 }
