@@ -12,21 +12,23 @@ import com.example.e_commerceapp.data.model.Product
 import com.example.e_commerceapp.databinding.FragmentShopCartBinding
 import com.example.e_commerceapp.ui.base.BaseFragment
 import com.example.e_commerceapp.ui.main.HomeActivity
+import com.example.e_commerceapp.utils.AppConstants
+import org.koin.android.viewmodel.ext.android.getViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class ShopCartFragment:BaseFragment<FragmentShopCartBinding , ShopCartViewModel>(),
     ShopCartProductsAdapter.CartProductsAdapterListener {
 
-    private val shopCartViewModel : ShopCartViewModel by viewModel{ parametersOf(SavedStateHandle(mapOf())) }
+    private lateinit var shopCartViewModel : ShopCartViewModel
     private lateinit var loginCustomer : Customer
     private val cartProductsAdapter = ShopCartProductsAdapter(mutableListOf() , this)
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         loginCustomer = (activity as HomeActivity).getLoginCustomer()
+        shopCartViewModel = getViewModel { parametersOf(SavedStateHandle(mapOf(AppConstants.LOGIN_CUSTOMER to loginCustomer.username))) }
+
+        super.onViewCreated(view, savedInstanceState)
 
         setHasOptionsMenu(true)
         initRecipesRecyclerView()

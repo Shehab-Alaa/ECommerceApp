@@ -96,7 +96,9 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
     }
 
     override fun onAddToCartClick(view: View, product: Product) {
-        TODO("Not yet implemented")
+        // push all products below customer username child
+        val shopCartProduct = Product(product.id , product.name , 1 , product.price , product.image , product.description , product.categoryId )
+        getViewModel().addShopCartProduct(loginCustomer.username , shopCartProduct)
     }
 
     private fun openVoiceSearch(view: View) {

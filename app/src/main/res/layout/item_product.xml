@@ -78,9 +78,9 @@
         android:id="@+id/add_to_cart_btn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:background="#60B864"
         android:drawableLeft="@drawable/ic_shopping_cart"
         android:onClick="@{(view)->productItemViewModel.onAddItemToCartClick(view)}"
@@ -88,9 +88,7 @@
         android:text="@string/add_to_cart"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView2" />
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

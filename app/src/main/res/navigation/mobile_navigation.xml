@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/watchesItem"
         android:name="com.example.e_commerceapp.ui.main.product.ProductsFragment"
-        android:label="ProductsFragment"
+        android:label="Watches"
         tools:layout="@layout/fragment_products">
         <action
             android:id="@+id/action_productsFragment_to_productDetailsFragment"
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/mobilesItem"
         android:name="com.example.e_commerceapp.ui.main.product.ProductsFragment"
-        android:label="ProductsFragment"
+        android:label="Mobiles"
         tools:layout="@layout/fragment_products">
         <action
             android:id="@+id/action_productsFragment_to_productDetailsFragment"
@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/tvsItem"
         android:name="com.example.e_commerceapp.ui.main.product.ProductsFragment"
-        android:label="ProductsFragment"
+        android:label="Smart Tv's"
         tools:layout="@layout/fragment_products">
         <action
             android:id="@+id/action_productsFragment_to_productDetailsFragment"
@@ -55,17 +55,17 @@
     <fragment
         android:id="@+id/addProductItem"
         android:name="com.example.e_commerceapp.ui.main.add_product.AddProductFragment"
-        android:label="AddProductFragment"
+        android:label="Add Product"
         tools:layout="@layout/fragment_add_product"/>
     <fragment
         android:id="@+id/customerProfileItem"
         android:name="com.example.e_commerceapp.ui.main.customer_profile.CustomerProfileFragment"
-        android:label="CustomerProfileFragment"
+        android:label="My account"
         tools:layout="@layout/fragment_customer_profile"/>
     <fragment
         android:id="@+id/productDetailsItem"
         android:name="com.example.e_commerceapp.ui.main.product_details.ProductDetailsFragment"
-        android:label="ProductDetailsFragment"
+        android:label="Product Details"
         tools:layout="@layout/fragment_product_details">
         <action
             android:id="@+id/action_productDetailsFragment_to_shopCartFragment"
@@ -77,6 +77,6 @@
     <fragment
         android:id="@+id/shopCartItem"
         android:name="com.example.e_commerceapp.ui.main.shop_cart.ShopCartFragment"
-        android:label="ShopCartFragment"
+        android:label="Shop Cart"
         tools:layout="@layout/fragment_shop_cart"/>
 </navigation>

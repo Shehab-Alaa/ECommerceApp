@@ -43,4 +43,8 @@ class ProductsViewModel (firebaseRepository: FirebaseDataSource, saveStateHandle
         productsData.postValue(productsData.value?.filter { it.name.contains(searchInput) } as MutableList<Product>?)
     }
 
+    fun addShopCartProduct(customerUsername : String, shopCartProduct : Product){
+        getFirebaseRepository().pushShopCartProduct(customerUsername , shopCartProduct)
+    }
+
 }

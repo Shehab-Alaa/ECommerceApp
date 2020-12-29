@@ -22,4 +22,6 @@ object AppConstants {
 
     const val PREF_NAME = BuildConfig.APPLICATION_ID + "_pref"
     const val REMEMBERED_CUSTOMER = "rememberMe"
+
+    const val SHOP_CART_PRODUCTS_REF = "shopCartProducts"
 }

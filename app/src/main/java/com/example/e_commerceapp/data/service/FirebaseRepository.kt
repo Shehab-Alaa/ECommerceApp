@@ -43,5 +43,17 @@ class FirebaseRepository(private val databaseReference : DatabaseReference) : Fi
             .child(categoryName)
     }
 
+    override fun pushShopCartProduct(customerUsername: String, shopCartProduct: Product) {
+        databaseReference.child(AppConstants.SHOP_CART_PRODUCTS_REF)
+            .child(customerUsername)
+            .push()
+            .setValue(shopCartProduct)
+    }
+
+    override fun getShopCartProductsDataQuery(loginCustomerUsername: String): Query {
+        return databaseReference.child(AppConstants.SHOP_CART_PRODUCTS_REF)
+            .child(loginCustomerUsername)
+    }
+
 
 }
