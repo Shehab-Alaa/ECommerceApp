@@ -41,5 +41,37 @@ class ShopCartViewModel(firebaseRepository: FirebaseDataSource, saveStateHandle:
             })
     }
 
+    fun updateProductQuantity(productName : String , productQuantity : Int){
+        // First find product key using product name
+        // Update quantity value
+        getFirebaseRepository().getProductKeyQuery(loginCustomerUsername.toString() , productName)
+            .addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val childKey = snapshot.children.iterator().next().key
+                    getFirebaseRepository().updateProductQuantity(loginCustomerUsername.toString() , childKey.toString() , productQuantity)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.i("Here" , "Cancelled")
+                }
+
+            })
+    }
+
+    fun deleteShopCartProduct(productName: String){
+        // get product key and then delete it
+        getFirebaseRepository().getProductKeyQuery(loginCustomerUsername.toString() , productName)
+            .addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val childKey = snapshot.children.iterator().next().key
+                    getFirebaseRepository().deleteShopCartProduct(loginCustomerUsername.toString() , childKey.toString())
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.i("Here" , "Cancelled")
+                }
+
+            })
+    }
 
 }

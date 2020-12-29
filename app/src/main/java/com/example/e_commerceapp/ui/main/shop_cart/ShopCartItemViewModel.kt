@@ -19,10 +19,14 @@ class ShopCartItemViewModel (private val product: Product,
     }
 
     fun incProductQuantity(view: View){
+        product.quantity += 1
+        productQuantity.set(product.quantity.toString())
         changeQuantityClickListener.incProductQuantity(view, product)
     }
 
     fun decProductQuantity(view: View){
+        product.quantity -= 1
+        productQuantity.set(product.quantity.toString())
         changeQuantityClickListener.decProductQuantity(view, product)
     }
 

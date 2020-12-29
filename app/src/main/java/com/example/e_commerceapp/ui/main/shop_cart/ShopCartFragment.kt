@@ -3,6 +3,7 @@ package com.example.e_commerceapp.ui.main.shop_cart
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerceapp.BR
@@ -32,6 +33,10 @@ class ShopCartFragment:BaseFragment<FragmentShopCartBinding , ShopCartViewModel>
 
         setHasOptionsMenu(true)
         initRecipesRecyclerView()
+
+        getViewDataBinding().orderNowBtn.setOnClickListener {
+
+        }
     }
 
     private fun initRecipesRecyclerView(){
@@ -43,15 +48,16 @@ class ShopCartFragment:BaseFragment<FragmentShopCartBinding , ShopCartViewModel>
     }
 
     override fun incProductQuantity(view: View, product: Product) {
-        TODO("Not yet implemented")
+        getViewModel().updateProductQuantity(product.name, product.quantity)
     }
 
     override fun decProductQuantity(view: View, product: Product) {
-        TODO("Not yet implemented")
+        getViewModel().updateProductQuantity(product.name , product.quantity)
     }
 
     override fun deleteProductFromCart(view: View, product: Product) {
-        TODO("Not yet implemented")
+       getViewModel().deleteShopCartProduct(product.name)
+       Toast.makeText(context , "product is removed from cart" , Toast.LENGTH_SHORT).show()
     }
 
     override val layoutId: Int

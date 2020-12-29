@@ -24,4 +24,6 @@ object AppConstants {
     const val REMEMBERED_CUSTOMER = "rememberMe"
 
     const val SHOP_CART_PRODUCTS_REF = "shopCartProducts"
+    const val PRODUCT_NAME_REF = "name"
+    const val PRODUCT_QUANTITY_REF = "quantity"
 }

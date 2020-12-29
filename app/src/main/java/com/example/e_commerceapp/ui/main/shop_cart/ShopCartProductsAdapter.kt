@@ -8,7 +8,7 @@ import com.example.e_commerceapp.databinding.ItemShopCartProductBinding
 import com.example.e_commerceapp.ui.base.BaseRecyclerViewAdapter
 import com.example.e_commerceapp.ui.base.BaseViewHolder
 
-class ShopCartProductsAdapter(cartProductItems: MutableList<Product> , private val cartProductsAdapterListener: CartProductsAdapterListener) : BaseRecyclerViewAdapter<Product>(cartProductItems) {
+class ShopCartProductsAdapter(private val cartProductItems: MutableList<Product> , private val cartProductsAdapterListener: CartProductsAdapterListener) : BaseRecyclerViewAdapter<Product>(cartProductItems) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return  CartProductsViewHolder(ItemShopCartProductBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -25,6 +25,8 @@ class ShopCartProductsAdapter(cartProductItems: MutableList<Product> , private v
         }
 
         override fun deleteProductFromCart(view: View, product: Product) {
+            cartProductItems.remove(product)
+            notifyDataSetChanged()
             cartProductsAdapterListener.deleteProductFromCart(view, product)
         }
 

@@ -16,4 +16,8 @@ interface FirebaseDataSource {
     fun getProductsDataQuery(categoryName : String) : Query
     fun pushShopCartProduct(customerUsername : String , shopCartProduct: Product)
     fun getShopCartProductsDataQuery(loginCustomerUsername : String) : Query
+    fun getProductKeyQuery(loginCustomerUsername: String , productName : String): Query
+    fun updateProductQuantity(loginCustomerUsername: String , productKey : String , productQuantity: Int)
+    fun deleteShopCartProduct(loginCustomerUsername: String , productKey: String)
+
 }

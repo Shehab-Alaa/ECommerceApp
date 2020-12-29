@@ -10,6 +10,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.SavedStateHandle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -97,8 +98,9 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
 
     override fun onAddToCartClick(view: View, product: Product) {
         // push all products below customer username child
-        val shopCartProduct = Product(product.id , product.name , 1 , product.price , product.image , product.description , product.categoryId )
-        getViewModel().addShopCartProduct(loginCustomer.username , shopCartProduct)
+        product.quantity = 1
+        getViewModel().addShopCartProduct(loginCustomer.username , product)
+        Toast.makeText(context , "product is added to cart" , Toast.LENGTH_SHORT).show()
     }
 
     private fun openVoiceSearch(view: View) {

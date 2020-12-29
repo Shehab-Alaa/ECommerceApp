@@ -9,6 +9,7 @@ import com.example.e_commerceapp.ui.main.HomeViewModel
 import com.example.e_commerceapp.ui.main.add_product.AddProductViewModel
 import com.example.e_commerceapp.ui.main.customer_profile.CustomerProfileViewModel
 import com.example.e_commerceapp.ui.main.login.LoginViewModel
+import com.example.e_commerceapp.ui.main.order.OrderViewModel
 import com.example.e_commerceapp.ui.main.product.ProductsViewModel
 import com.example.e_commerceapp.ui.main.product_details.ProductDetailsViewModel
 import com.example.e_commerceapp.ui.main.shop_cart.ShopCartViewModel
@@ -33,6 +34,7 @@ val appModule = module {
     viewModel { (handle : SavedStateHandle) -> ProductDetailsViewModel(get()  , handle ) }
     viewModel { (handle : SavedStateHandle) -> ShopCartViewModel(get()  , handle) }
     viewModel { (handle : SavedStateHandle) -> SignUpViewModel(get() , handle) }
+    viewModel { (handle : SavedStateHandle) -> OrderViewModel(get() , handle) }
 
     single { provideSharedPreferences(get())}
 }

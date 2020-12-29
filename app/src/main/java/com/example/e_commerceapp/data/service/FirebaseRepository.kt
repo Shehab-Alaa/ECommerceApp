@@ -9,9 +9,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.Query
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
+import kotlin.math.log
 
 class FirebaseRepository(private val databaseReference : DatabaseReference) : FirebaseDataSource {
-
 
     override fun pushCustomerToFirebase(customer: Customer): Task<Void> {
         return databaseReference.child(AppConstants.CUSTOMERS_REF)
@@ -53,6 +53,26 @@ class FirebaseRepository(private val databaseReference : DatabaseReference) : Fi
     override fun getShopCartProductsDataQuery(loginCustomerUsername: String): Query {
         return databaseReference.child(AppConstants.SHOP_CART_PRODUCTS_REF)
             .child(loginCustomerUsername)
+    }
+
+    override fun getProductKeyQuery(loginCustomerUsername: String, productName: String): Query {
+        return databaseReference.child(AppConstants.SHOP_CART_PRODUCTS_REF)
+            .child(loginCustomerUsername)
+            .orderByChild(AppConstants.PRODUCT_NAME_REF)
+            .equalTo(productName)
+    }
+
+    override fun updateProductQuantity(loginCustomerUsername: String, productKey: String, productQuantity: Int) {
+        databaseReference.child(AppConstants.SHOP_CART_PRODUCTS_REF)
+            .child(loginCustomerUsername)
+            .child(productKey)
+            .child(AppConstants.PRODUCT_QUANTITY_REF).setValue(productQuantity)
+    }
+
+    override fun deleteShopCartProduct(loginCustomerUsername: String, productKey: String) {
+        databaseReference.child(AppConstants.SHOP_CART_PRODUCTS_REF)
+            .child(loginCustomerUsername)
+            .child(productKey).removeValue()
     }
 
 
