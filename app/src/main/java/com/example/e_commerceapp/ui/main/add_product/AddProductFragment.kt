@@ -6,6 +6,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
@@ -27,7 +29,7 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setHasOptionsMenu(false)
+        setHasOptionsMenu(true)
 
         getViewDataBinding().addProductBtn.setOnClickListener {
             when {

@@ -80,12 +80,13 @@
                             <com.google.android.material.textfield.TextInputLayout
                                 style="@style/parent"
                                 android:layout_marginTop="@dimen/signup_text_margin_top">
+
                                 <EditText
                                     android:id="@+id/id_editText"
                                     style="@style/modifiedEditText"
-                                    android:inputType="text"
-                                    android:maxLines="1"
-                                    android:hint="ID"/>
+                                    android:hint="ID"
+                                    android:inputType="number"
+                                    android:maxLines="1" />
                             </com.google.android.material.textfield.TextInputLayout>
 
                             <com.google.android.material.textfield.TextInputLayout

@@ -1,6 +1,7 @@
 package com.example.e_commerceapp.ui.main.add_product
 
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
@@ -16,7 +17,10 @@ class AddProductViewModel(firebaseRepository: FirebaseDataSource, saveStateHandl
     fun uploadProductImageToFirebase(imageUri: Uri){
         getFirebaseRepository().getUploadImageFirebaseTask(imageUri)
              .addOnSuccessListener { taskSnapshot ->
-                 productImageData.value = taskSnapshot.metadata?.reference?.downloadUrl.toString()
+                 val result = taskSnapshot.metadata?.reference?.downloadUrl
+                 result?.addOnSuccessListener {
+                     productImageData.value = it.toString()
+                 }
              }.addOnFailureListener {
                  productImageData.value = "Default"
             }

@@ -3,6 +3,7 @@ package com.example.e_commerceapp.ui.main.sign_up
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
@@ -33,9 +34,9 @@ class SignUpActivity:BaseActivity<ActivitySignUpBinding , SignUpViewModel>(),
         getViewDataBinding().signUpButton.setOnClickListener {
             // check for all texts that they contains input values and toast for any error
 
-            customer = Customer(Integer.parseInt(getViewDataBinding().idEditText.toString()) ,
-                getViewDataBinding().usernameEditText.toString() ,
-                getViewDataBinding().passwordEditText.toString() ,
+            customer = Customer(Integer.parseInt(getViewDataBinding().idEditText.text.toString()) ,
+                getViewDataBinding().usernameEditText.text.toString() ,
+                getViewDataBinding().passwordEditText.text.toString() ,
                 getViewDataBinding().genderSpinner.selectedItem.toString() ,
                 getViewDataBinding().birthdayEditText.text.toString() ,
                 getViewDataBinding().jobEditText.text.toString()
@@ -55,8 +56,9 @@ class SignUpActivity:BaseActivity<ActivitySignUpBinding , SignUpViewModel>(),
         })
     }
 
-    override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-
+    override fun onDateSet(p0: DatePicker?, year: Int, month: Int, day: Int) {
+        val date = "$month/$day/$year"
+        getViewDataBinding().birthdayEditText.setText(date)
     }
 
     private fun navigateToApp(customer : Customer){

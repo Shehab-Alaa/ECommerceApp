@@ -55,6 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="product id."
+        android:inputType="number"
         android:layout_margin="5dp">
     </EditText>
 
@@ -71,6 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="product price."
+        android:inputType="number"
         android:layout_margin="5dp">
     </EditText>
 
@@ -79,6 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="product quantity."
+        android:inputType="number"
         android:layout_margin="5dp">
     </EditText>
 

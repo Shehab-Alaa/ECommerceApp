@@ -29,25 +29,10 @@ class HomeActivity : BaseActivity<ActivityHomeBinding , HomeViewModel>() {
     private val homeViewModel: HomeViewModel by viewModel{ parametersOf(SavedStateHandle(mapOf())) }
     private lateinit var customer : Customer
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-
-        customer = intent.getSerializableExtra(AppConstants.LOGIN_CUSTOMER) as Customer
-    }
-
-    override fun getLayoutId(): Int {
-        return R.layout.activity_home
-    }
-
-    override fun getViewModel(): HomeViewModel {
-        return homeViewModel
-    }
-
-    override val bindingVariable: Int
-        get() = BR.homeViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        customer = intent.getSerializableExtra(AppConstants.LOGIN_CUSTOMER) as Customer
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -65,6 +50,18 @@ class HomeActivity : BaseActivity<ActivityHomeBinding , HomeViewModel>() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
+    override fun getLayoutId(): Int {
+        return R.layout.activity_home
+    }
+
+    override fun getViewModel(): HomeViewModel {
+        return homeViewModel
+    }
+
+    override val bindingVariable: Int
+        get() = BR.homeViewModel
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

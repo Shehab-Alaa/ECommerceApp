@@ -4,6 +4,7 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -14,6 +15,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
+import com.example.e_commerceapp.data.model.Customer
 import com.example.e_commerceapp.data.model.Product
 import com.example.e_commerceapp.databinding.FragmentProductsBinding
 import com.example.e_commerceapp.ui.base.BaseFragment
@@ -32,7 +34,7 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
     private lateinit var productsViewModel : ProductsViewModel
     private val productsAdapter = ProductsAdapter(mutableListOf(), this)
     private val voiceCode = 10
-    private val loginCustomer = (activity as HomeActivity).getLoginCustomer()
+    private lateinit var loginCustomer : Customer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +45,8 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        loginCustomer = (activity as HomeActivity).getLoginCustomer()
 
         setHasOptionsMenu(true)
         initRecipesRecyclerView()

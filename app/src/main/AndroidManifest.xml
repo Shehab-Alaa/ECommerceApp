@@ -21,6 +21,8 @@
             android:name=".ui.main.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.main.sign_up.SignUpActivity"
+            android:label="Sign Up"/>
         <activity android:name=".ui.main.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

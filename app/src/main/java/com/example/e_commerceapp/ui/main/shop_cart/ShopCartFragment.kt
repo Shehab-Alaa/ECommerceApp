@@ -7,6 +7,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
+import com.example.e_commerceapp.data.model.Customer
 import com.example.e_commerceapp.data.model.Product
 import com.example.e_commerceapp.databinding.FragmentShopCartBinding
 import com.example.e_commerceapp.ui.base.BaseFragment
@@ -18,11 +19,14 @@ class ShopCartFragment:BaseFragment<FragmentShopCartBinding , ShopCartViewModel>
     ShopCartProductsAdapter.CartProductsAdapterListener {
 
     private val shopCartViewModel : ShopCartViewModel by viewModel{ parametersOf(SavedStateHandle(mapOf())) }
-    private val loginCustomer = (activity as HomeActivity).getLoginCustomer()
+    private lateinit var loginCustomer : Customer
     private val cartProductsAdapter = ShopCartProductsAdapter(mutableListOf() , this)
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        loginCustomer = (activity as HomeActivity).getLoginCustomer()
 
         setHasOptionsMenu(true)
         initRecipesRecyclerView()
