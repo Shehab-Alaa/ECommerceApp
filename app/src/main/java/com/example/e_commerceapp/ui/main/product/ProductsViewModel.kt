@@ -45,8 +45,8 @@ class ProductsViewModel (firebaseRepository: FirebaseDataSource, saveStateHandle
             })
     }
 
-    fun filterProductsData(searchInput : String){
-        //productsData.postValue(productsData.value?.filter { it.name.contains(searchInput) } as MutableList<Product>?)
+    fun searchProductsData(searchInput : String){
+
         val productsHolder = mutableListOf<Product>()
         productsData.value?.let {
             if (it.isNotEmpty()){

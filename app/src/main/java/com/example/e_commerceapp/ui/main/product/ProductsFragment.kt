@@ -4,7 +4,6 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
-import android.util.Log
 import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.View
@@ -37,7 +36,6 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
     private val voiceCode = 10
     private lateinit var loginCustomer : Customer
 
-    // TODO :: Search by barcode to product name
     // TODO :: when add Customer (signUp) , product (addProduct) check for name exist or not
     // TODO :: orders fragment by order history chart per month ==> read orders from customer username child
     // TODO :: DetailsFragment ==> only display more data
@@ -73,7 +71,7 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
         getViewDataBinding().productsSearchBox.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 // filter ViewModel recipes list according to search entered
-                getViewModel().filterProductsData(getViewDataBinding().productsSearchBox.text.toString())
+                getViewModel().searchProductsData(getViewDataBinding().productsSearchBox.text.toString())
                 return@OnEditorActionListener true
             }
             false
@@ -140,51 +138,30 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
     }
 
     private fun openBarCodeSearch(){
-        val intentIntegrator = IntentIntegrator(activity)
-        intentIntegrator.setBeepEnabled(false)
-        intentIntegrator.setCameraId(0)
-        intentIntegrator.setPrompt("SCAN")
-        intentIntegrator.setBarcodeImageEnabled(false)
-        intentIntegrator.initiateScan()
+        IntentIntegrator.forSupportFragment(this).initiateScan()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        Log.i("Here" , "Iam here but no else")
-        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        if (result != null) {
-            Log.i("Here" , "Result Not Null")
-            if (result.contents == null) {
-                Toast.makeText(context, "cancelled", Toast.LENGTH_SHORT).show()
-            } else {
-                Log.i("Here", "Scanned")
-                Log.i("Here" , result.contents)
-            }
-        }else if (requestCode == voiceCode){
-            if (resultCode == RESULT_OK && data != null) {
-                val resultHolder = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-                getViewModel().filterProductsData(resultHolder!![0])
-                getViewDataBinding().productsSearchBox.setText(resultHolder[0])
-            }
-        }
-        else {
-            super.onActivityResult(requestCode, resultCode, data)
-        }
-       /*
-        super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             voiceCode -> if (resultCode == RESULT_OK && data != null) {
                 val result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-                getViewModel().filterProductsData(result!![0])
+                getViewModel().searchProductsData(result!![0])
                 getViewDataBinding().productsSearchBox.setText(result[0])
-            }else -> {
-             val result = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-             Log.i("Here" , "Result " + (result?.get(0) ?: "Fault"))
-            Log.i("Here" , "Data " + data.toString())
-              getViewModel().filterProductsData(data.toString()) // Result from scanning Barcode.
-                getViewDataBinding().productsSearchBox.setText(data.toString())
+            }
+            IntentIntegrator.REQUEST_CODE -> {
+                val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+                if (result != null) {
+                    if (result.contents != null) {
+                        getViewModel().searchProductsData(result.contents)
+                        getViewDataBinding().productsSearchBox.setText(result.contents)
+                    }
+                }
+            }
+            else -> {
+                super.onActivityResult(requestCode, resultCode, data)
             }
         }
-       */
+
     }
 
     override val layoutId: Int
