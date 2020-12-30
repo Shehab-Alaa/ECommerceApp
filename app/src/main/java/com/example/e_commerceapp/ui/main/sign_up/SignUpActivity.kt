@@ -34,16 +34,30 @@ class SignUpActivity:BaseActivity<ActivitySignUpBinding , SignUpViewModel>(),
 
         getViewDataBinding().signUpButton.setOnClickListener {
             // check for all texts that they contains input values and toast for any error
-
-            customer = Customer(
-                getViewDataBinding().usernameEditText.text.toString() ,
-                getViewDataBinding().passwordEditText.text.toString() ,
-                getViewDataBinding().genderSpinner.selectedItem.toString() ,
-                getViewDataBinding().birthdayEditText.text.toString() ,
-                getViewDataBinding().jobEditText.text.toString()
-                )
-
-            getViewModel().signUpNewCustomer(customer)
+            when {
+                getViewDataBinding().usernameEditText.text.toString() == "" -> {
+                    toastMessage("please choose username")
+                }
+                getViewDataBinding().passwordEditText.text.toString() == "" -> {
+                    toastMessage("please choose password")
+                }
+                getViewDataBinding().birthdayEditText.text.toString() == "" -> {
+                    toastMessage("please choose birthday")
+                }
+                getViewDataBinding().jobEditText.text.toString() == "" -> {
+                    toastMessage("please enter your job")
+                }
+                else -> {
+                    customer = Customer(
+                        getViewDataBinding().usernameEditText.text.toString(),
+                        getViewDataBinding().passwordEditText.text.toString(),
+                        getViewDataBinding().genderSpinner.selectedItem.toString(),
+                        getViewDataBinding().birthdayEditText.text.toString(),
+                        getViewDataBinding().jobEditText.text.toString()
+                    )
+                    getViewModel().signUpNewCustomer(customer)
+                }
+            }
         }
 
         getViewModel().validSignUpLiveData.observe(this , {
@@ -52,7 +66,8 @@ class SignUpActivity:BaseActivity<ActivitySignUpBinding , SignUpViewModel>(),
                 navigateToApp(customer)
             }else{
                 // this username is taken / choose another one
-                Toast.makeText(this , "please choose another username" , Toast.LENGTH_SHORT).show()
+                Toast.makeText(this , "this username is already taken" , Toast.LENGTH_SHORT).show()
+                getViewDataBinding().usernameEditText.requestFocus()
             }
         })
 
@@ -72,6 +87,10 @@ class SignUpActivity:BaseActivity<ActivitySignUpBinding , SignUpViewModel>(),
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra(AppConstants.LOGIN_CUSTOMER, customer)
         startActivity(intent)
+    }
+
+    private fun toastMessage(message:String){
+        Toast.makeText(this , message , Toast.LENGTH_LONG).show()
     }
 
     override fun getLayoutId(): Int {

@@ -43,10 +43,10 @@ class LoginActivity:BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         getViewDataBinding().loginButton.setOnClickListener {
             when {
                 getViewDataBinding().usernameEditText.text.isEmpty() -> {
-                    Toast.makeText(this, "Please enter you username.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "please enter you username.", Toast.LENGTH_SHORT).show()
                 }
                 getViewDataBinding().passwordEditText.text.isEmpty() -> {
-                    Toast.makeText(this, "Please enter you password.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "please enter you password.", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
                     getViewModel().fetchCustomerData(
@@ -69,7 +69,7 @@ class LoginActivity:BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 prefsEditor.apply()
             }
 
-            // Navigate to app
+            // navigate to app
             navigateToApp(it)
         })
 

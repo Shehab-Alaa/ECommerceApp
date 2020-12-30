@@ -36,7 +36,6 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
     private val voiceCode = 10
     private lateinit var loginCustomer : Customer
 
-    // TODO :: when add Customer (signUp) , product (addProduct) check for name exist or not
     // TODO :: orders fragment by order history chart per month ==> read orders from customer username child
     // TODO :: DetailsFragment ==> only display more data
     // TODO :: AccountFragment ==> only display customer data with avatar and logout
