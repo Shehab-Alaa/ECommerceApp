@@ -32,9 +32,9 @@ class FirebaseRepository(private val databaseReference : DatabaseReference) : Fi
             .putFile(imageUri)
     }
 
-    override fun pushProductToFirebase(product: Product) {
+    override fun pushProductToFirebase(product: Product,categoryName: String) {
         databaseReference.child(AppConstants.CATEGORIES_REF)
-            .child(product.categoryId)
+            .child(categoryName)
             .push()
             .setValue(product)
     }

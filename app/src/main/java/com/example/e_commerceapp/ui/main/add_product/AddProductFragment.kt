@@ -56,7 +56,7 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
                             getViewModel().productImageLiveData.value.toString() ,
                             getViewDataBinding().productDescriptionText.text.toString() ,
                         )
-                        getViewModel().addProductToFirebase(product)
+                        getViewModel().addProductToFirebase(product,getViewDataBinding().categorySpinner.selectedItem.toString())
                         resetViewsInputs()
                     })
 

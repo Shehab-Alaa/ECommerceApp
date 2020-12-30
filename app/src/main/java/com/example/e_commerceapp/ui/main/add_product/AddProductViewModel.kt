@@ -26,8 +26,8 @@ class AddProductViewModel(firebaseRepository: FirebaseDataSource, saveStateHandl
             }
     }
 
-    fun addProductToFirebase(product: Product){
-        getFirebaseRepository().pushProductToFirebase(product)
+    fun addProductToFirebase(product: Product , categoryName:String){
+        getFirebaseRepository().pushProductToFirebase(product,categoryName)
     }
 
 }

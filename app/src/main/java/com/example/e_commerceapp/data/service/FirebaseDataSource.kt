@@ -13,7 +13,8 @@ interface FirebaseDataSource {
     fun pushCustomerToFirebase(customer : Customer): Task<Void>
     fun getCustomerDataQuery(username:String) : Query
     fun getUploadImageFirebaseTask(imageUri : Uri) : UploadTask
-    fun pushProductToFirebase(product: Product)
+
+    fun pushProductToFirebase(product: Product,categoryName: String)
     fun getProductsDataQuery(categoryName : String) : Query
     fun pushShopCartProduct(customerUsername : String , shopCartProduct: Product)
     fun getShopCartProductsDataQuery(loginCustomerUsername : String) : Query

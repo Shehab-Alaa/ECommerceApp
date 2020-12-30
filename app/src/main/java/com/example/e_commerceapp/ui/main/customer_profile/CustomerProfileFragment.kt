@@ -23,6 +23,8 @@ class CustomerProfileFragment:BaseFragment<FragmentCustomerProfileBinding , Cust
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setHasOptionsMenu(true)
+
         getViewDataBinding().logoutBtn.setOnClickListener {
             // delete customer (remember me) from shared preference if exists
             // navigate to LoginActivity
