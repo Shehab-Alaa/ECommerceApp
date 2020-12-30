@@ -28,4 +28,5 @@ object AppConstants {
     const val PRODUCT_QUANTITY_REF = "quantity"
 
     const val SELECTED_ORDER = "selected_order"
+    const val ORDERS_REF = "orders"
 }

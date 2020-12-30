@@ -2,6 +2,7 @@ package com.example.e_commerceapp.data.service
 
 import android.net.Uri
 import com.example.e_commerceapp.data.model.Customer
+import com.example.e_commerceapp.data.model.Order
 import com.example.e_commerceapp.data.model.Product
 import com.example.e_commerceapp.utils.AppConstants
 import com.google.android.gms.tasks.Task
@@ -73,6 +74,19 @@ class FirebaseRepository(private val databaseReference : DatabaseReference) : Fi
         databaseReference.child(AppConstants.SHOP_CART_PRODUCTS_REF)
             .child(loginCustomerUsername)
             .child(productKey).removeValue()
+    }
+
+    override fun deleteCustomerShopCart(loginCustomerUsername: String) {
+        databaseReference.child(AppConstants.SHOP_CART_PRODUCTS_REF)
+            .child(loginCustomerUsername)
+            .removeValue()
+    }
+
+    override fun pushCustomerOrder(customerUsername: String, order: Order) {
+        databaseReference.child(AppConstants.ORDERS_REF)
+            .child(customerUsername)
+            .push()
+            .setValue(order)
     }
 
 

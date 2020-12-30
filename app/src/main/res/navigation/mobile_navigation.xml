@@ -91,5 +91,8 @@
         <argument
             android:name="selected_order"
             app:argType="com.example.e_commerceapp.data.model.Order" />
+        <action
+            android:id="@+id/action_orderFragment_to_watchesItem"
+            app:destination="@id/watchesItem" />
     </fragment>
 </navigation>

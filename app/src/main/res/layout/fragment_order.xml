@@ -24,7 +24,7 @@
             android:layout_height="80dp"
             android:src="@drawable/ic_baseline_check_circle_outline_24"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="20dp">
         </ImageView>
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_gravity="center_horizontal"
-            android:text="@{orderViewModel.orderLiveData.totalPrice + `EGP`}"
+            android:text="@{orderViewModel.orderLiveData.totalPrice + ` EGP`}"
             android:textSize="22sp">
         </TextView>
 
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="15dp"
             android:text="Order Details"
             android:textSize="20sp"
             android:textStyle="bold">
@@ -65,27 +65,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="3dp">
+                android:padding="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{`Customer username: ` + orderViewModel.orderLiveData.customerUsername}"
-                android:textSize="18sp">
+                android:text="@{`Customer: ` + orderViewModel.orderLiveData.customerUsername}"
+                android:textSize="16sp">
             </TextView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{`Order date: ` + orderViewModel.orderLiveData.orderDate}"
-                android:textSize="18sp">
+                android:text="@{`Date: ` + orderViewModel.orderLiveData.orderDate}"
+                android:textSize="16sp">
             </TextView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{`Delivery location: ` + orderViewModel.orderLiveData.deliveryLocation}"
-                    android:textSize="18sp">
+                    android:text="@{`Delivery location: ` + orderViewModel.orderLiveData.deliveryLocation.longitude  + ` | ` + orderViewModel.orderLiveData.deliveryLocation.latitude}"
+                    android:textSize="16sp">
                 </TextView>
 
             </LinearLayout>
@@ -103,7 +103,8 @@
                     android:text="Products"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:layout_gravity="start">
+                    android:layout_gravity="start"
+                    android:padding="5dp">
                 </TextView>
 
                 <TextView
@@ -112,7 +113,8 @@
                     android:text="Quantity"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:layout_gravity="end">
+                    android:layout_gravity="end"
+                    android:padding="5dp">
                 </TextView>
 
             </androidx.cardview.widget.CardView>

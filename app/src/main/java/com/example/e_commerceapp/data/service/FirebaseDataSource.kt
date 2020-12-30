@@ -2,6 +2,7 @@ package com.example.e_commerceapp.data.service
 
 import android.net.Uri
 import com.example.e_commerceapp.data.model.Customer
+import com.example.e_commerceapp.data.model.Order
 import com.example.e_commerceapp.data.model.Product
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.Query
@@ -19,5 +20,7 @@ interface FirebaseDataSource {
     fun getProductKeyQuery(loginCustomerUsername: String , productName : String): Query
     fun updateProductQuantity(loginCustomerUsername: String , productKey : String , productQuantity: Int)
     fun deleteShopCartProduct(loginCustomerUsername: String , productKey: String)
+    fun deleteCustomerShopCart(loginCustomerUsername: String)
+    fun pushCustomerOrder(customerUsername: String,order: Order)
 
 }

@@ -42,8 +42,8 @@ class ShopCartViewModel(firebaseRepository: FirebaseDataSource, saveStateHandle:
     }
 
     fun updateProductQuantity(productName : String , productQuantity : Int){
-        // First find product key using product name
-        // Update quantity value
+        // first find product key using product name
+        // update quantity value
         getFirebaseRepository().getProductKeyQuery(loginCustomerUsername.toString() , productName)
             .addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
