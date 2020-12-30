@@ -49,13 +49,12 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
                     getViewModel().productImageLiveData.observe(viewLifecycleOwner , {
                         getViewDataBinding().imageProgressbar.visibility = View.GONE
                         // push product to specific category
-                        val product = Product(Integer.parseInt(getViewDataBinding().productIdText.text.toString()),
+                        val product = Product(
                             getViewDataBinding().productNameText.text.toString() ,
                             Integer.parseInt(getViewDataBinding().productQuantityText.text.toString()) ,
                             getViewDataBinding().productPriceText.text.toString().toDouble() ,
                             getViewModel().productImageLiveData.value.toString() ,
                             getViewDataBinding().productDescriptionText.text.toString() ,
-                            getViewDataBinding().categorySpinner.selectedItem.toString()
                         )
                         getViewModel().addProductToFirebase(product)
                         resetViewsInputs()
@@ -93,14 +92,12 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
 
     private fun resetViewsInputs(){
         getViewDataBinding().productImage.setImageResource(R.mipmap.item)
-        getViewDataBinding().productIdText.setText("")
         getViewDataBinding().productNameText.setText("")
         getViewDataBinding().productQuantityText.setText("")
         getViewDataBinding().productPriceText.setText("")
         getViewDataBinding().productDescriptionText.setText("")
-        getViewDataBinding().categorySpinner.setSelection(0)
-        getViewDataBinding().productIdText.isFocusable = true
-        getViewDataBinding().productIdText.requestFocus()
+        getViewDataBinding().productNameText.isFocusable = true
+        getViewDataBinding().productNameText.requestFocus()
     }
 
     override val layoutId: Int

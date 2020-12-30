@@ -79,9 +79,11 @@ class LoginActivity:BaseActivity<ActivityLoginBinding, LoginViewModel>() {
             }
         })
 
+        getViewDataBinding().forgetPasswordText.setOnClickListener {
+            startActivity(Intent(this , PasswordRecoveryActivity::class.java))
+        }
 
         getViewDataBinding().signUpText.setOnClickListener{
-            finish()
             val intent = Intent(this , SignUpActivity::class.java)
             startActivity(intent)
         }

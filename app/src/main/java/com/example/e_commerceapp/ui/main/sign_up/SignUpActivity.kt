@@ -14,6 +14,7 @@ import com.example.e_commerceapp.data.model.Customer
 import com.example.e_commerceapp.databinding.ActivitySignUpBinding
 import com.example.e_commerceapp.ui.base.BaseActivity
 import com.example.e_commerceapp.ui.main.HomeActivity
+import com.example.e_commerceapp.ui.main.login.LoginActivity
 import com.example.e_commerceapp.utils.AppConstants
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -34,7 +35,7 @@ class SignUpActivity:BaseActivity<ActivitySignUpBinding , SignUpViewModel>(),
         getViewDataBinding().signUpButton.setOnClickListener {
             // check for all texts that they contains input values and toast for any error
 
-            customer = Customer(Integer.parseInt(getViewDataBinding().idEditText.text.toString()) ,
+            customer = Customer(
                 getViewDataBinding().usernameEditText.text.toString() ,
                 getViewDataBinding().passwordEditText.text.toString() ,
                 getViewDataBinding().genderSpinner.selectedItem.toString() ,
@@ -54,6 +55,11 @@ class SignUpActivity:BaseActivity<ActivitySignUpBinding , SignUpViewModel>(),
                 Toast.makeText(this , "please choose another username" , Toast.LENGTH_SHORT).show()
             }
         })
+
+        getViewDataBinding().toSignInBtn.setOnClickListener{
+            finish()
+            startActivity(Intent(this , LoginActivity::class.java))
+        }
     }
 
     override fun onDateSet(p0: DatePicker?, year: Int, month: Int, day: Int) {

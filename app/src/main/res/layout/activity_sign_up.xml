@@ -80,18 +80,6 @@
                             <com.google.android.material.textfield.TextInputLayout
                                 style="@style/parent"
                                 android:layout_marginTop="@dimen/signup_text_margin_top">
-
-                                <EditText
-                                    android:id="@+id/id_editText"
-                                    style="@style/modifiedEditText"
-                                    android:hint="ID"
-                                    android:inputType="number"
-                                    android:maxLines="1" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                style="@style/parent"
-                                android:layout_marginTop="@dimen/signup_text_margin_top">
                                 <EditText
                                     android:id="@+id/username_editText"
                                     style="@style/modifiedEditText"
@@ -123,16 +111,16 @@
                             </com.google.android.material.textfield.TextInputLayout>
 
 
-                            <EditText
-                                android:id="@+id/birthday_editText"
-                                android:layout_width="match_parent"
-                                android:layout_height="35dp"
-                                android:hint="@string/birthday"
-                                android:gravity="center_vertical"
-                                android:textSize="12sp"
-                                android:inputType="date">
-                            </EditText>
-
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/parent"
+                                android:layout_marginTop="@dimen/signup_text_margin_top">
+                                <EditText
+                                    style="@style/modifiedEditText"
+                                    android:id="@+id/birthday_editText"
+                                    android:hint="@string/birthday"
+                                    android:inputType="date">
+                                </EditText>
+                            </com.google.android.material.textfield.TextInputLayout>
 
                             <Spinner
                                 android:id="@+id/gender_spinner"
@@ -152,6 +140,7 @@
                                 android:layout_margin="10dp"/>
 
                             <TextView
+                                android:id="@+id/to_sign_in_btn"
                                 style="@style/parent"
                                 android:layout_gravity="center"
                                 android:textStyle="bold"
