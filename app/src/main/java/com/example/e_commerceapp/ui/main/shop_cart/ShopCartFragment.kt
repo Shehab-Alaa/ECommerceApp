@@ -17,6 +17,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
+import com.example.e_commerceapp.data.model.CurrentLocation
 import com.example.e_commerceapp.data.model.Customer
 import com.example.e_commerceapp.data.model.Order
 import com.example.e_commerceapp.data.model.Product
@@ -79,7 +80,7 @@ class ShopCartFragment:BaseFragment<FragmentShopCartBinding, ShopCartViewModel>(
 
     override fun onLocationChanged(location: Location) {
         // Navigate when get User Current Location
-        order.deliveryLocation = location
+        order.deliveryLocation = CurrentLocation(location.latitude , location.longitude)
         getNavController().navigate(
             ShopCartFragmentDirections.actionShopCartItemToOrderFragment(
                 order

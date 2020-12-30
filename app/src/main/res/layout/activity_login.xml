@@ -127,7 +127,7 @@
                                     android:textColor="@color/primaryTextColor"
                                     android:textSize="@dimen/newsMoreTextSize"
                                     android:onClick="@{(view)->loginViewModel.onForgotPasswordClick(view)}"
-                                    android:layout_marginLeft="85dp"/>
+                                    android:layout_marginLeft="80dp"/>
 
                             </LinearLayout>
 

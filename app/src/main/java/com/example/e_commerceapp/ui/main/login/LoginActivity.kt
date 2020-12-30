@@ -29,8 +29,8 @@ class LoginActivity:BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         super.onStart()
 
         // when open app check for any customer shared preference to navigate directly to the app.
-        val json: String? = sharedPreferences.getString(AppConstants.REMEMBERED_CUSTOMER, "")
-        if (json != "") {
+        val json: String? = sharedPreferences.getString(AppConstants.REMEMBERED_CUSTOMER, "Nothing")
+        if (json != "Nothing") {
             val customer: Customer = Gson().fromJson(json, Customer::class.java)
             navigateToApp(customer)
         }
@@ -62,10 +62,12 @@ class LoginActivity:BaseActivity<ActivityLoginBinding, LoginViewModel>() {
             // when logout delete customer from shared preference
             // when open app check for any customer shared preference to navigate directly to the app after saving it.
 
-            val prefsEditor: SharedPreferences.Editor = sharedPreferences.edit()
-            val json = Gson().toJson(it)
-            prefsEditor.putString(AppConstants.REMEMBERED_CUSTOMER, json)
-            prefsEditor.apply()
+            if (getViewDataBinding().rememberMeCheckbox.isChecked) {
+                val prefsEditor: SharedPreferences.Editor = sharedPreferences.edit()
+                val json = Gson().toJson(it)
+                prefsEditor.putString(AppConstants.REMEMBERED_CUSTOMER, json)
+                prefsEditor.apply()
+            }
 
             // Navigate to app
             navigateToApp(it)
