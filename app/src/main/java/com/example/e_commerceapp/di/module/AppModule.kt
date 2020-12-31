@@ -11,6 +11,7 @@ import com.example.e_commerceapp.ui.main.customer_profile.CustomerProfileViewMod
 import com.example.e_commerceapp.ui.main.login.LoginViewModel
 import com.example.e_commerceapp.ui.main.login.PasswordRecoveryViewModel
 import com.example.e_commerceapp.ui.main.order.OrderViewModel
+import com.example.e_commerceapp.ui.main.orders_history.OrdersHistoryViewModel
 import com.example.e_commerceapp.ui.main.product.ProductsViewModel
 import com.example.e_commerceapp.ui.main.product_details.ProductDetailsViewModel
 import com.example.e_commerceapp.ui.main.shop_cart.ShopCartViewModel
@@ -37,6 +38,8 @@ val appModule = module {
     viewModel { (handle : SavedStateHandle) -> SignUpViewModel(get() , handle) }
     viewModel { (handle : SavedStateHandle) -> OrderViewModel(get() , handle) }
     viewModel { (handle : SavedStateHandle) -> PasswordRecoveryViewModel(get() , handle) }
+    viewModel { (handle : SavedStateHandle) -> OrdersHistoryViewModel(get() , handle) }
+
 
 
     single { provideSharedPreferences(get())}

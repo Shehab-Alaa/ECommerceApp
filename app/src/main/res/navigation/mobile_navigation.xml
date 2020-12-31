@@ -95,4 +95,9 @@
             android:id="@+id/action_orderFragment_to_watchesItem"
             app:destination="@id/watchesItem" />
     </fragment>
+    <fragment
+        android:id="@+id/ordersHistoryItem"
+        android:name="com.example.e_commerceapp.ui.main.orders_history.OrdersHistoryFragment"
+        android:label="Orders History"
+        tools:layout="@layout/fragment_orders_history"/>
 </navigation>

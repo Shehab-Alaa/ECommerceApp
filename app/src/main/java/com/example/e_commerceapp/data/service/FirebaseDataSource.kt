@@ -22,5 +22,5 @@ interface FirebaseDataSource {
     fun deleteShopCartProduct(loginCustomerUsername: String , productKey: String)
     fun deleteCustomerShopCart(loginCustomerUsername: String)
     fun pushCustomerOrder(customerUsername: String,order: Order)
-
+    fun getCustomerOrdersQuery(customerUsername: String): Query
 }

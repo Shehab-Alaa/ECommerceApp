@@ -89,5 +89,10 @@ class FirebaseRepository(private val databaseReference : DatabaseReference) : Fi
             .setValue(order)
     }
 
+    override fun getCustomerOrdersQuery(customerUsername: String) : Query {
+        return databaseReference.child(AppConstants.ORDERS_REF)
+            .child(customerUsername)
+    }
+
 
 }

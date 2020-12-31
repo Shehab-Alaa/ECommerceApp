@@ -21,6 +21,10 @@
             android:icon="@drawable/ic_add_circle"
             android:title="@string/add_product" />
         <item
+            android:id="@+id/ordersHistoryItem"
+            android:icon="@drawable/ic_order"
+            android:title="@string/my_orders" />
+        <item
             android:id="@+id/customerProfileItem"
             android:icon="@drawable/ic_account_circle"
             android:title="@string/my_account" />

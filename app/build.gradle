@@ -115,9 +115,10 @@ dependencies {
     //implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
     implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
 
-
     // shared preferences save objects
     implementation 'com.google.code.gson:gson:2.8.6'
 
+    // Chart
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
 
 }

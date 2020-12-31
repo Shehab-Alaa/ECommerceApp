@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ordersHistoryViewModel"
+            type="com.example.e_commerceapp.ui.main.orders_history.OrdersHistoryViewModel" />
+    </data>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackground">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        android:padding="5dp">
+
+        <com.anychart.AnyChartView
+            android:id="@+id/orders_history_chart"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_margin="8dp"
+            android:chartData="@{ordersHistoryViewModel.ordersLiveData}">
+        </com.anychart.AnyChartView>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
+
+</layout>

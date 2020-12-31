@@ -17,7 +17,7 @@
     <string name="orders">Orders</string>
     <string name="my_account">My account</string>
     <string name="shop_cart">Shop cart</string>
-    <string name="add_product">Add Product</string>
+    <string name="add_product">Add product</string>
 
     <string name="register">REGISTER</string>
     <string name="login_email_hint">Email</string>
@@ -34,6 +34,7 @@
     <string name="gender">Gender</string>
     <string name="search">search</string>
     <string name="add_to_cart">ADD TO CART</string>
+    <string name="my_orders">My orders</string>
 
     <string-array name="gender_array">
         <item>Male</item>
