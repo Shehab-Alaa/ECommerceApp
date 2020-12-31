@@ -28,6 +28,8 @@ class OrderFragment:BaseFragment<FragmentOrderBinding , OrderViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setHasOptionsMenu(false)
+
         val args = OrderFragmentArgs.fromBundle(requireArguments())
         orderViewModel = getViewModel{ parametersOf(SavedStateHandle(mapOf(AppConstants.SELECTED_ORDER to args.selectedOrder))) }
     }
@@ -37,9 +39,7 @@ class OrderFragment:BaseFragment<FragmentOrderBinding , OrderViewModel>() {
 
         loginCustomer = (activity as HomeActivity).getLoginCustomer()
 
-        setHasOptionsMenu(false)
         initRecipesRecyclerView()
-
 
         getViewDataBinding().confirmOrderBtn.setOnClickListener {
             // push this order to customer username child in orders ref

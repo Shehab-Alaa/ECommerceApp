@@ -41,13 +41,18 @@ class ShopCartFragment:BaseFragment<FragmentShopCartBinding, ShopCartViewModel>(
     private lateinit var locationManager: LocationManager
     private val locationPermissionCode = 2
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(false)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loginCustomer = (activity as HomeActivity).getLoginCustomer()
         shopCartViewModel = getViewModel { parametersOf(SavedStateHandle(mapOf(AppConstants.LOGIN_CUSTOMER to loginCustomer.username))) }
 
         super.onViewCreated(view, savedInstanceState)
 
-        setHasOptionsMenu(true)
         initRecipesRecyclerView()
 
         getViewDataBinding().orderNowBtn.setOnClickListener {

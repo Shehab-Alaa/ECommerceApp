@@ -8,6 +8,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
@@ -16,6 +17,7 @@ import com.example.e_commerceapp.R
 import com.example.e_commerceapp.data.model.Product
 import com.example.e_commerceapp.databinding.FragmentAddProductBinding
 import com.example.e_commerceapp.ui.base.BaseFragment
+import com.example.e_commerceapp.ui.main.product.ProductsFragmentDirections
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import java.io.IOException
@@ -26,11 +28,13 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
     private var imageUri: Uri? = null
     private val addProductViewModel: AddProductViewModel by viewModel{ parametersOf(SavedStateHandle(mapOf())) }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setHasOptionsMenu(true)
-
         getViewDataBinding().addProductBtn.setOnClickListener {
             when {
                 getViewDataBinding().productNameText.text.toString() == "" -> {
@@ -98,6 +102,12 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
         getViewDataBinding().productDescriptionText.setText("")
         getViewDataBinding().productNameText.isFocusable = true
         getViewDataBinding().productNameText.requestFocus()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_shop_cart)
+            getNavController().navigate(AddProductFragmentDirections.actionAddProductItemToShopCartItem())
+        return super.onOptionsItemSelected(item)
     }
 
     override val layoutId: Int

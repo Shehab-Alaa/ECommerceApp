@@ -56,12 +56,20 @@
         android:id="@+id/addProductItem"
         android:name="com.example.e_commerceapp.ui.main.add_product.AddProductFragment"
         android:label="Add Product"
-        tools:layout="@layout/fragment_add_product"/>
+        tools:layout="@layout/fragment_add_product">
+        <action
+            android:id="@+id/action_addProductItem_to_shopCartItem"
+            app:destination="@id/shopCartItem" />
+    </fragment>
     <fragment
         android:id="@+id/customerProfileItem"
         android:name="com.example.e_commerceapp.ui.main.customer_profile.CustomerProfileFragment"
         android:label="My account"
-        tools:layout="@layout/fragment_customer_profile"/>
+        tools:layout="@layout/fragment_customer_profile">
+        <action
+            android:id="@+id/action_customerProfileItem_to_shopCartItem"
+            app:destination="@id/shopCartItem" />
+    </fragment>
     <fragment
         android:id="@+id/productDetailsItem"
         android:name="com.example.e_commerceapp.ui.main.product_details.ProductDetailsFragment"
@@ -99,5 +107,9 @@
         android:id="@+id/ordersHistoryItem"
         android:name="com.example.e_commerceapp.ui.main.orders_history.OrdersHistoryFragment"
         android:label="Orders History"
-        tools:layout="@layout/fragment_orders_history"/>
+        tools:layout="@layout/fragment_orders_history">
+        <action
+            android:id="@+id/action_ordersHistoryItem_to_shopCartItem"
+            app:destination="@id/shopCartItem" />
+    </fragment>
 </navigation>

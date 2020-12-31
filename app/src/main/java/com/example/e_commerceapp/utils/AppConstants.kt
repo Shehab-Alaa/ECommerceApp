@@ -29,4 +29,6 @@ object AppConstants {
 
     const val SELECTED_ORDER = "selected_order"
     const val ORDERS_REF = "orders"
+
+    const val SELECTED_PRODUCT = "selectedProduct"
 }

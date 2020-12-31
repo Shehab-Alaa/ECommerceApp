@@ -36,13 +36,10 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
     private val voiceCode = 10
     private lateinit var loginCustomer : Customer
 
-    // TODO :: orders fragment by order history chart per month ==> read orders from customer username child
-    // TODO :: DetailsFragment ==> only display more data
     // TODO :: AccountFragment ==> only display customer data with avatar and logout
+    // TODO :: Animation intent when navigate
     // TODO :: ProgressBar when make heavy operation
     // TODO :: Check design is good enough or not ,, test all application functions together
-
-    // TODO :: Fix computer Sound , Prepare Labs and weka and what to do;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
