@@ -5,11 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.observe
@@ -18,7 +17,6 @@ import com.example.e_commerceapp.R
 import com.example.e_commerceapp.data.model.Product
 import com.example.e_commerceapp.databinding.FragmentAddProductBinding
 import com.example.e_commerceapp.ui.base.BaseFragment
-import com.example.e_commerceapp.ui.main.product.ProductsFragmentDirections
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import java.io.IOException
@@ -29,13 +27,10 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
     private var imageUri: Uri? = null
     private val addProductViewModel: AddProductViewModel by viewModel{ parametersOf(SavedStateHandle(mapOf())) }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setLayoutAnimations()
 
         getViewDataBinding().addProductBtn.setOnClickListener {
             when {
@@ -60,7 +55,7 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
                             Integer.parseInt(getViewDataBinding().productQuantityText.text.toString()) ,
                             getViewDataBinding().productPriceText.text.toString().toDouble() ,
                             getViewModel().productImageLiveData.value.toString() ,
-                            getViewDataBinding().productDescriptionText.text.toString() ,
+                            getViewDataBinding().productDescriptionText.text.toString()
                         )
                         getViewModel().addProductToFirebase(product,getViewDataBinding().categorySpinner.selectedItem.toString())
                         getViewDataBinding().progressBar.visibility = View.GONE
@@ -73,10 +68,17 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
         }
 
         getViewDataBinding().productImage.setOnClickListener{
-            getViewDataBinding().imageProgressbar.visibility = View.VISIBLE
             openImageChooser()
         }
 
+    }
+
+    private fun setLayoutAnimations(){
+        val rightAnimationController: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_slide_right)
+        getViewDataBinding().dataCardview.layoutAnimation = rightAnimationController
+
+        val bottomAnimationController: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_from_bottom)
+        getViewDataBinding().btnLayout.layoutAnimation = bottomAnimationController
     }
 
     private fun openImageChooser() {
@@ -93,7 +95,6 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
             try {
                 val bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, imageUri)
                 getViewDataBinding().productImage.setImageBitmap(bitmap)
-                getViewDataBinding().imageProgressbar.visibility = View.GONE
             } catch (e: IOException) {
                 e.printStackTrace()
             }

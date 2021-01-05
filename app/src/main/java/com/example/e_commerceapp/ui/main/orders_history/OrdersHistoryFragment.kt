@@ -21,11 +21,6 @@ class OrdersHistoryFragment:BaseFragment<FragmentOrdersHistoryBinding , OrdersHi
     private lateinit var ordersHistoryViewModel : OrdersHistoryViewModel
     private lateinit var loginCustomer : Customer
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loginCustomer = (activity as HomeActivity).getLoginCustomer()
         ordersHistoryViewModel = getViewModel { parametersOf(SavedStateHandle(mapOf(AppConstants.LOGIN_CUSTOMER to loginCustomer.username))) }

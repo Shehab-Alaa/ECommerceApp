@@ -81,7 +81,9 @@
             </RelativeLayout>
 
 
+
             <LinearLayout
+                android:id="@+id/info_layout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/profile_layout"
@@ -106,7 +108,7 @@
                     android:clickable="true"
                     android:elevation="4dp"
                     android:padding="20dp"
-                    android:text="@{`Birthday: ` + customerProfileViewModel.customerLiveData.birthday" />
+                    android:text="@{`Birthday: ` + customerProfileViewModel.customerLiveData.birthday}" />
 
             </LinearLayout>
         </RelativeLayout>

@@ -5,6 +5,8 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import androidx.lifecycle.SavedStateHandle
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
@@ -26,16 +28,13 @@ class CustomerProfileFragment:BaseFragment<FragmentCustomerProfileBinding , Cust
     private lateinit var loginCustomer : Customer
     private val sharedPreferences : SharedPreferences by inject()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loginCustomer = (activity as HomeActivity).getLoginCustomer()
         customerProfileViewModel = getViewModel { parametersOf(SavedStateHandle(mapOf(AppConstants.LOGIN_CUSTOMER to loginCustomer))) }
 
         super.onViewCreated(view, savedInstanceState)
+
+        setLayoutAnimations()
 
         getViewDataBinding().logoutBtn.setOnClickListener {
             // delete customer (remember me) from shared preference if exists
@@ -47,6 +46,14 @@ class CustomerProfileFragment:BaseFragment<FragmentCustomerProfileBinding , Cust
             val intent = Intent(activity , LoginActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun  setLayoutAnimations(){
+        val rightAnimationController: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_slide_right)
+        getViewDataBinding().profileLayout.layoutAnimation = rightAnimationController
+
+        val bottomAnimationController: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_from_bottom)
+        getViewDataBinding().infoLayout.layoutAnimation = bottomAnimationController
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

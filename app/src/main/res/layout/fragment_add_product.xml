@@ -28,32 +28,15 @@
         android:layout_marginTop="20dp">
     </TextView>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-        <ImageView
-            android:id="@+id/product_image"
-            android:layout_width="190dp"
-            android:layout_height="190dp"
-            android:layout_gravity="center"
-            android:src="@mipmap/item" />
-
-        <ProgressBar
-            android:id="@+id/image_progressbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:visibility="gone">
-        </ProgressBar>
-
-
-    </RelativeLayout>
-
+    <ImageView
+        android:id="@+id/product_image"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/item" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/data_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -127,6 +110,11 @@
 
     </androidx.cardview.widget.CardView>
 
+    <RelativeLayout
+        android:id="@+id/btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <Button
         android:id="@+id/add_product_btn"
         android:layout_width="180dp"
@@ -134,10 +122,12 @@
         android:text="Add Product"
         android:textAllCaps="false"
         android:textColor="#ffffff"
-        android:layout_gravity="center"
+        android:layout_centerInParent="true"
         android:layout_margin="20dp"
         android:background="#1FC326">
     </Button>
+
+    </RelativeLayout>
 
 </LinearLayout>
 

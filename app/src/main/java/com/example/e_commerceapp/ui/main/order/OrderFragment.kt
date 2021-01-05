@@ -1,6 +1,8 @@
 package com.example.e_commerceapp.ui.main.order
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
@@ -27,8 +29,6 @@ class OrderFragment:BaseFragment<FragmentOrderBinding , OrderViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setHasOptionsMenu(false)
 
         val args = OrderFragmentArgs.fromBundle(requireArguments())
         orderViewModel = getViewModel{ parametersOf(SavedStateHandle(mapOf(AppConstants.SELECTED_ORDER to args.selectedOrder))) }
@@ -59,6 +59,11 @@ class OrderFragment:BaseFragment<FragmentOrderBinding , OrderViewModel>() {
         // set Animation to all children (items) of this Layout
         getViewDataBinding().ordersRv.layoutAnimation = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fall_down)
         getViewDataBinding().ordersRv.adapter = ordersAdapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
     }
 
     override val layoutId: Int

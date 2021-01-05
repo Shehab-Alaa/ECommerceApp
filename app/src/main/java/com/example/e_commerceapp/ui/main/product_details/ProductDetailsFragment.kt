@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import androidx.transition.TransitionInflater
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.FragmentProductDetailsBinding
@@ -28,8 +31,6 @@ class ProductDetailsFragment:BaseFragment<FragmentProductDetailsBinding , Produc
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setHasOptionsMenu(true)
-
         val args = ProductDetailsFragmentArgs.fromBundle(requireArguments())
         productDetailsViewModel = getViewModel{ parametersOf(SavedStateHandle(mapOf(AppConstants.SELECTED_PRODUCT to args.selectedProduct))) }
     }
@@ -38,6 +39,20 @@ class ProductDetailsFragment:BaseFragment<FragmentProductDetailsBinding , Produc
         super.onCreateView(inflater, container, savedInstanceState)
         initToolbar()
         return getRootView()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setLayoutAnimations()
+    }
+
+    private fun setLayoutAnimations(){
+        getViewDataBinding().productImage.transitionName = getViewModel().productLiveData.value?.image
+        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+
+        val rightAnimationController: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_slide_right)
+        getViewDataBinding().detailsCardView.layoutAnimation = rightAnimationController
     }
 
     private fun initToolbar() {

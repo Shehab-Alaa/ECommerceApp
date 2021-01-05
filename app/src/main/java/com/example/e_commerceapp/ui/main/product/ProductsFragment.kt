@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
@@ -49,7 +50,6 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
 
         loginCustomer = (activity as HomeActivity).getLoginCustomer()
 
-        setHasOptionsMenu(true)
         initRecipesRecyclerView()
 
         getViewModel().filteredProductsLiveData.observe(viewLifecycleOwner) {
@@ -105,11 +105,10 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
     }
 
     override fun onItemClick(view: View, item: Product) {
-        getNavController().navigate(
-            ProductsFragmentDirections.actionProductsFragmentToProductDetailsFragment(
-                item
-            )
-        )
+        view.transitionName = item.image
+        val extras = FragmentNavigatorExtras(view to item.image)
+        val action = ProductsFragmentDirections.actionProductsFragmentToProductDetailsFragment(item)
+        getNavController().navigate(action,extras)
     }
 
     override fun onAddToCartClick(view: View, product: Product) {

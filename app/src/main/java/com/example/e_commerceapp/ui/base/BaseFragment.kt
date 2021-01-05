@@ -23,6 +23,11 @@ abstract class BaseFragment<T : ViewDataBinding , V : BaseViewModel> : Fragment(
         mContext = context
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         viewDataBinding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         mRootView = viewDataBinding.root

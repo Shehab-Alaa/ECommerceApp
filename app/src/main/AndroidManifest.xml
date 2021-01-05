@@ -26,6 +26,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.main.sign_up.SignUpActivity"
             android:label="Sign Up"/>
+        <activity
+            android:name=".ui.main.login.PasswordRecoveryActivity"
+            android:label="Password Recovery" />
         <activity android:name=".ui.main.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

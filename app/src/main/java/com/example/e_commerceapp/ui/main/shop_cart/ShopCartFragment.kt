@@ -7,7 +7,8 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
@@ -29,6 +30,7 @@ import org.koin.android.viewmodel.ext.android.getViewModel
 import org.koin.core.parameter.parametersOf
 import java.util.*
 
+
 class ShopCartFragment:BaseFragment<FragmentShopCartBinding, ShopCartViewModel>(),
     ShopCartProductsAdapter.CartProductsAdapterListener , LocationListener{
 
@@ -41,11 +43,6 @@ class ShopCartFragment:BaseFragment<FragmentShopCartBinding, ShopCartViewModel>(
     private lateinit var locationManager: LocationManager
     private val locationPermissionCode = 2
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loginCustomer = (activity as HomeActivity).getLoginCustomer()
@@ -77,13 +74,15 @@ class ShopCartFragment:BaseFragment<FragmentShopCartBinding, ShopCartViewModel>(
     }
 
     private fun getCustomerLocation() {
-        locationManager = (activity as HomeActivity).getSystemService(LOCATION_SERVICE) as LocationManager
         if ((ContextCompat.checkSelfPermission((activity as HomeActivity), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
-            ActivityCompat.requestPermissions(activity as HomeActivity, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), locationPermissionCode
-            )
+            ActivityCompat.requestPermissions(activity as HomeActivity, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), locationPermissionCode)
         }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, this);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0f, this);
+        else {
+            // permission is Granted
+            locationManager = (activity as HomeActivity).getSystemService(LOCATION_SERVICE) as LocationManager
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, this);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0f, this);
+        }
     }
 
     override fun onLocationChanged(location: Location) {
@@ -95,11 +94,7 @@ class ShopCartFragment:BaseFragment<FragmentShopCartBinding, ShopCartViewModel>(
         locationManager.removeUpdates(this)
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == locationPermissionCode) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(context, "Permission Granted", Toast.LENGTH_SHORT).show()
@@ -140,6 +135,11 @@ class ShopCartFragment:BaseFragment<FragmentShopCartBinding, ShopCartViewModel>(
     override fun deleteProductFromCart(view: View, product: Product) {
        getViewModel().deleteShopCartProduct(product.name)
        Toast.makeText(context, "product is removed from cart", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
     }
 
     override val layoutId: Int
