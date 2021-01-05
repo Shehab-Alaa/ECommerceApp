@@ -12,6 +12,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.observe
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.data.model.Product
@@ -35,6 +36,7 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         getViewDataBinding().addProductBtn.setOnClickListener {
             when {
                 getViewDataBinding().productNameText.text.toString() == "" -> {
@@ -48,10 +50,10 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
                 }
                 else -> {
                     // upload image to firebase storage
-                    getViewDataBinding().imageProgressbar.visibility = View.VISIBLE
+                    getViewDataBinding().progressBar.visibility = View.VISIBLE
+
                     imageUri?.let { it1 -> getViewModel().uploadProductImageToFirebase(it1) }
-                    getViewModel().productImageLiveData.observe(viewLifecycleOwner , {
-                        getViewDataBinding().imageProgressbar.visibility = View.GONE
+                    getViewModel().productImageLiveData.observe(viewLifecycleOwner) {
                         // push product to specific category
                         val product = Product(
                             getViewDataBinding().productNameText.text.toString() ,
@@ -61,14 +63,17 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
                             getViewDataBinding().productDescriptionText.text.toString() ,
                         )
                         getViewModel().addProductToFirebase(product,getViewDataBinding().categorySpinner.selectedItem.toString())
+                        getViewDataBinding().progressBar.visibility = View.GONE
+                        Toast.makeText(context , "product is added." , Toast.LENGTH_SHORT).show()
                         resetViewsInputs()
-                    })
+                    }
 
                 }
             }
         }
 
         getViewDataBinding().productImage.setOnClickListener{
+            getViewDataBinding().imageProgressbar.visibility = View.VISIBLE
             openImageChooser()
         }
 
@@ -88,6 +93,7 @@ class AddProductFragment:BaseFragment<FragmentAddProductBinding, AddProductViewM
             try {
                 val bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, imageUri)
                 getViewDataBinding().productImage.setImageBitmap(bitmap)
+                getViewDataBinding().imageProgressbar.visibility = View.GONE
             } catch (e: IOException) {
                 e.printStackTrace()
             }

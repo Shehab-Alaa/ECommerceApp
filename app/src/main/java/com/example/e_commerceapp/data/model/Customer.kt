@@ -7,5 +7,5 @@ data class Customer(
     val password : String = "",
     val gender : String = " ",
     val birthday : String = "",
-    val job : String = "",
+    val job : String = ""
 ) : Serializable

@@ -3,6 +3,9 @@
 <layout  xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="shopCartViewModel"
             type="com.example.e_commerceapp.ui.main.shop_cart.ShopCartViewModel" />
@@ -14,6 +17,18 @@
     android:orientation="vertical"
     android:background="@color/appBackground">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{shopCartViewModel.cartProductsLiveData.size() == 0 ? View.VISIBLE : View.GONE}">
+        </ProgressBar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cart_products_rv"
@@ -21,10 +36,11 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/item_shop_cart_product"
         android:scrollbars="vertical"
-        android:layout_weight="1"
         android:recyclerViewAdapter="@{shopCartViewModel.cartProductsLiveData}"
         android:scrollbarThumbVertical="@drawable/list_scrollbar">
     </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/order_now_btn"

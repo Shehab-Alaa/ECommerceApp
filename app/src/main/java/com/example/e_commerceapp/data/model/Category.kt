@@ -4,6 +4,6 @@ import java.io.Serializable
 
 data class Category(
     val categoryID : Int ,
-    val categoryName : String,
+    val categoryName : String
 ) : Serializable {
 }

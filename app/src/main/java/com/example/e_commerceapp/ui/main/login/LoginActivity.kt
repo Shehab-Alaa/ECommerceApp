@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.observe
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.data.model.Customer
@@ -57,7 +58,7 @@ class LoginActivity:BaseActivity<ActivityLoginBinding, LoginViewModel>() {
             }
         }
 
-        getViewModel().customerLiveData.observe(this, {
+        getViewModel().customerLiveData.observe(this) {
             // if remember me is checked save customer to shared preference
             // when logout delete customer from shared preference
             // when open app check for any customer shared preference to navigate directly to the app after saving it.
@@ -71,13 +72,13 @@ class LoginActivity:BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
             // navigate to app
             navigateToApp(it)
-        })
+        }
 
-        getViewModel().validLoginLiveData.observe(this, {
-            if (it == false) {
+        getViewModel().validLoginLiveData.observe(this) {
+            if (!it) {
                 Toast.makeText(this, "Invalid Login", Toast.LENGTH_SHORT).show()
             }
-        })
+        }
 
         getViewDataBinding().forgetPasswordText.setOnClickListener {
             startActivity(Intent(this , PasswordRecoveryActivity::class.java))

@@ -8,18 +8,22 @@ import android.view.View
 import androidx.lifecycle.SavedStateHandle
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
+import com.example.e_commerceapp.data.model.Customer
 import com.example.e_commerceapp.databinding.FragmentCustomerProfileBinding
 import com.example.e_commerceapp.ui.base.BaseFragment
 import com.example.e_commerceapp.ui.main.HomeActivity
 import com.example.e_commerceapp.ui.main.login.LoginActivity
 import com.example.e_commerceapp.ui.main.product.ProductsFragmentDirections
+import com.example.e_commerceapp.utils.AppConstants
 import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.getViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class CustomerProfileFragment:BaseFragment<FragmentCustomerProfileBinding , CustomerProfileViewModel>() {
 
-    private val customerProfileViewModel : CustomerProfileViewModel by viewModel{ parametersOf(SavedStateHandle(mapOf())) }
+    private lateinit var customerProfileViewModel : CustomerProfileViewModel
+    private lateinit var loginCustomer : Customer
     private val sharedPreferences : SharedPreferences by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +32,9 @@ class CustomerProfileFragment:BaseFragment<FragmentCustomerProfileBinding , Cust
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        loginCustomer = (activity as HomeActivity).getLoginCustomer()
+        customerProfileViewModel = getViewModel { parametersOf(SavedStateHandle(mapOf(AppConstants.LOGIN_CUSTOMER to loginCustomer))) }
+
         super.onViewCreated(view, savedInstanceState)
 
         getViewDataBinding().logoutBtn.setOnClickListener {

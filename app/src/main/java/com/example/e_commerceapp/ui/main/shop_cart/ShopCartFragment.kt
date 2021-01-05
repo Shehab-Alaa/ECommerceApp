@@ -56,6 +56,9 @@ class ShopCartFragment:BaseFragment<FragmentShopCartBinding, ShopCartViewModel>(
         initRecipesRecyclerView()
 
         getViewDataBinding().orderNowBtn.setOnClickListener {
+
+            getViewDataBinding().progressBar.visibility = View.VISIBLE
+
             // set orderDate , deliveryLocation , total price ==> before OrderCheckout navigation .
             val currentDateTime = Calendar.getInstance().time
 
@@ -84,13 +87,10 @@ class ShopCartFragment:BaseFragment<FragmentShopCartBinding, ShopCartViewModel>(
     }
 
     override fun onLocationChanged(location: Location) {
+        getViewDataBinding().progressBar.visibility = View.GONE
         // Navigate when get User Current Location
         order.deliveryLocation = CurrentLocation(location.latitude , location.longitude)
-        getNavController().navigate(
-            ShopCartFragmentDirections.actionShopCartItemToOrderFragment(
-                order
-            )
-        )
+        getNavController().navigate(ShopCartFragmentDirections.actionShopCartItemToOrderFragment(order))
         // remove listener for callback
         locationManager.removeUpdates(this)
     }

@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.observe
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.data.model.Customer
@@ -60,7 +61,7 @@ class SignUpActivity:BaseActivity<ActivitySignUpBinding , SignUpViewModel>(),
             }
         }
 
-        getViewModel().validSignUpLiveData.observe(this , {
+        getViewModel().validSignUpLiveData.observe(this) {
             if (it){
                 // navigate to the app
                 navigateToApp(customer)
@@ -69,7 +70,7 @@ class SignUpActivity:BaseActivity<ActivitySignUpBinding , SignUpViewModel>(),
                 Toast.makeText(this , "this username is already taken" , Toast.LENGTH_SHORT).show()
                 getViewDataBinding().usernameEditText.requestFocus()
             }
-        })
+        }
 
         getViewDataBinding().toSignInBtn.setOnClickListener{
             finish()

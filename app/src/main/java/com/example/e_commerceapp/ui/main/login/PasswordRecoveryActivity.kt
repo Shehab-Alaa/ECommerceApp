@@ -3,6 +3,7 @@ package com.example.e_commerceapp.ui.main.login
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.observe
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ActivityPasswordRecoveryBinding
@@ -24,8 +25,8 @@ class PasswordRecoveryActivity:BaseActivity<ActivityPasswordRecoveryBinding, Pas
             getViewModel().getCustomerData(getViewDataBinding().usernameEditText.text.toString() , getViewDataBinding().jobEditText.text.toString())
         }
 
-        getViewModel().customerLiveData.observe(this , {
-            if (it != null){
+        getViewModel().customerLiveData.observe(this) {
+            if (it.username.isNotEmpty()){
                 // customer exist and set his password recovery
                 getViewDataBinding().passwordText.text = it.password
                 Toast.makeText(this , "password recovered" , Toast.LENGTH_SHORT).show()
@@ -33,7 +34,7 @@ class PasswordRecoveryActivity:BaseActivity<ActivityPasswordRecoveryBinding, Pas
                 // fake customer
                 Toast.makeText(this , "not valid customer data" , Toast.LENGTH_SHORT).show()
             }
-        })
+        }
     }
 
     override val bindingVariable: Int

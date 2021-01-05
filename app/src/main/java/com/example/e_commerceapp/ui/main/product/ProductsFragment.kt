@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerceapp.BR
 import com.example.e_commerceapp.R
@@ -36,11 +37,6 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
     private val voiceCode = 10
     private lateinit var loginCustomer : Customer
 
-    // TODO :: AccountFragment ==> only display customer data with avatar and logout
-    // TODO :: Animation intent when navigate
-    // TODO :: ProgressBar when make heavy operation
-    // TODO :: Check design is good enough or not ,, test all application functions together
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -56,13 +52,13 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding, ProductsViewModel>(
         setHasOptionsMenu(true)
         initRecipesRecyclerView()
 
-        getViewModel().filteredProductsLiveData.observe(viewLifecycleOwner, {
+        getViewModel().filteredProductsLiveData.observe(viewLifecycleOwner) {
             productsAdapter.addItems(it)
-        })
+        }
 
-        getViewModel().productsLiveData.observe(viewLifecycleOwner, {
+        getViewModel().productsLiveData.observe(viewLifecycleOwner) {
             productsAdapter.addItems(it)
-        })
+        }
 
         getViewDataBinding().productsSearchBox.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
